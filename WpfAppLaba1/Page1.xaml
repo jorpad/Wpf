@@ -31,6 +31,26 @@
             </MenuItem>
             <MenuItem Header="Отчет"></MenuItem>
         </Menu>
+        <ToolBar Name="ToolBar1" Margin="3">
+            <Button Name="Undo" ToolTip="Отменить редактирование/создание" Margin="5,2,5,2">
+                <Image Source="Image/Undo.png" Height="25" Width="25" />
+            </Button>
+            <Button Name="Add" ToolTip="Добавить" Margin="3">
+                <Image Source="Image/Add.png" Height="25" Width="25" />
+            </Button>
+            <Button Name="Edit" ToolTip="Редактировать" Margin="3">
+                <Image Source="Image/Edit.png" Height="25" Width="25" />
+            </Button>
+            <Button Name="Search" ToolTip="Поиск" Margin="3">
+                <Image Source="Image/Search.png" Height="25" Width="25" />
+            </Button>
+            <Button Name="Save" ToolTip="Сохранить" Margin="3">
+                <Image Source="Image/Save.png" Height="25" Width="25" />
+            </Button>
+            <Button Name="Delete" ToolTip="Удалить" Margin="3">
+                <Image Source="Image/Delete.png" Height="25" Width="25" />
+            </Button>
+        </ToolBar>
         <TextBlock Margin="5" >Список сотрудников</TextBlock>
         <DataGrid Name="DataGrid1">
             <DataGrid.Columns>
