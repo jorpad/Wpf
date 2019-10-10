@@ -32,6 +32,6 @@
             <LineBreak></LineBreak>
             <LineBreak></LineBreak>
         </TextBlock>
-        <Button Margin="25,15,0,15" Width="92" HorizontalAlignment="Left" Command="Close" Template="{StaticResource ResourceKey=ButtonTemplate}" Height="35" Content="Выход" RenderTransformOrigin="0.424,-0.057"/>
+         <Button Margin="25,15,0,15" Width="92" HorizontalAlignment="Left" Template="{StaticResource ResourceKey=ButtonTemplate}" Height="35" Content="Выход" RenderTransformOrigin="0.424,-0.057"/>
     </StackPanel>
 </Page>
