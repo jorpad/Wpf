@@ -20,13 +20,17 @@
             </Setter.Value>
         </Setter>
     </Style>
-    <Style TargetType="{x:Type TextBlock}">
+    <!--<Style TargetType="{x:Type TextBlock}">
         <Setter Property="Background" Value="Transparent" />
         <Setter Property="FontFamily" Value="GOST type B"/>
         <Setter Property="FontStyle" Value="Italic"/>
-    </Style>
+    </Style>-->
     <Style TargetType="{x:Type Menu}">
         <Setter Property="Background" Value="Transparent"/>
+        <Setter Property="Foreground" Value="Black"/>
+        <Setter Property="FontSize" Value="18"/>
+        <Setter Property="FontFamily" Value="GOST type B"/>
+        <Setter Property="FontStyle" Value="Italic"/>
     </Style>
     <Style TargetType="{x:Type StackPanel}">
         <Setter Property="Background">
@@ -56,6 +60,13 @@
     </Style>-->
     <Style TargetType="{x:Type ToolBar}">
         <Setter Property="Background" Value="Transparent"/>
+    </Style>
+    <Style TargetType="{x:Type DataGrid}">
+        <Setter Property="Background" Value="Transparent"/>
+        <Setter Property="Foreground" Value="Black"/>
+        <Setter Property="FontSize" Value="18"/>
+        <Setter Property="FontFamily" Value="GOST type B"/>
+        <Setter Property="FontStyle" Value="Italic"/>
     </Style>
     <ControlTemplate x:Key="ButtonTemplate" TargetType="Button">
         <Border Name="Border" BorderBrush="Black" BorderThickness="1"
