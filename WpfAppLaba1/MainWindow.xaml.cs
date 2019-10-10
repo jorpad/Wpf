@@ -22,7 +22,7 @@ namespace WpfAppLaba1
     {
         public MainWindow()
         {
-            InitializeComponent();
+            //InitializeComponent();
         }
     }
 }

@@ -6,18 +6,9 @@
       xmlns:local="clr-namespace:WpfAppLaba1"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
-      Title="Page1">
+      Title="Сотрудники">
 
     <StackPanel>
-        <StackPanel.Background>
-            <LinearGradientBrush>
-                <LinearGradientBrush.GradientStops>
-                    <GradientStop Offset="0.00" Color="#FF87A0DE"/>
-                    <GradientStop Offset="0.50" Color="Azure"/>
-                    <GradientStop Offset="1.00" Color="#FF009CFF"/>
-                </LinearGradientBrush.GradientStops>
-            </LinearGradientBrush>
-        </StackPanel.Background>
         <Menu>
             <MenuItem Header="Действие" >
                 <MenuItem Header="Отменить" ></MenuItem>
@@ -31,27 +22,27 @@
             </MenuItem>
             <MenuItem Header="Отчет"></MenuItem>
         </Menu>
-        <ToolBar Name="ToolBar1" Margin="3">
+        <ToolBar Name="ToolBar1" Margin="-11,0,-18,0">
             <Button Name="Undo" ToolTip="Отменить редактирование/создание" Margin="5,2,5,2">
-                <Image Source="Image/Undo.png" Height="25" Width="25" />
+                <Image Source="Image/Undo.png" Height="40" Width="40" />
             </Button>
             <Button Name="Add" ToolTip="Добавить" Margin="3">
-                <Image Source="Image/Add.png" Height="25" Width="25" />
+                <Image Source="Image/Add.png" Height="40" Width="40" />
             </Button>
             <Button Name="Edit" ToolTip="Редактировать" Margin="3">
-                <Image Source="Image/Edit.png" Height="25" Width="25" />
+                <Image Source="Image/Edit.png" Height="40" Width="40" />
             </Button>
             <Button Name="Search" ToolTip="Поиск" Margin="3">
-                <Image Source="Image/Search.png" Height="25" Width="25" />
+                <Image Source="Image/Search.png" Height="40" Width="40" />
             </Button>
             <Button Name="Save" ToolTip="Сохранить" Margin="3">
-                <Image Source="Image/Save.png" Height="25" Width="25" />
+                <Image Source="Image/Save.png" Height="40" Width="40" />
             </Button>
             <Button Name="Delete" ToolTip="Удалить" Margin="3">
-                <Image Source="Image/Delete.png" Height="25" Width="25" />
+                <Image Source="Image/Delete.png" Height="40" Width="40" />
             </Button>
         </ToolBar>
-        <TextBlock Margin="5" >Список сотрудников</TextBlock>
+        <TextBlock Text="Список сотрудников" FontSize="20" Margin="10,0" />
         <DataGrid Name="DataGrid1">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Фамилия" />
@@ -63,6 +54,5 @@
                 <DataGridTextColumn Header="Электронная почта" />
             </DataGrid.Columns>
         </DataGrid>
-
     </StackPanel>
 </Page>

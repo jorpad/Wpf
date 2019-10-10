@@ -5,4 +5,72 @@
         <Setter Property="Background" Value="AntiqueWhite"/>
         <Setter Property="Padding" Value="0"/>
     </Style>
+    <Style TargetType="{x:Type Button}">
+        <Setter Property="Background" Value="Transparent"/>
+    </Style>
+    <Style TargetType="{x:Type Frame}">
+        <Setter Property="Background">
+            <Setter.Value>
+                <LinearGradientBrush>
+                    <LinearGradientBrush.GradientStops>
+                        <GradientStop Offset="0.50" Color="White"/>
+                        <GradientStop Offset="1.00" Color="Gray"/>
+                    </LinearGradientBrush.GradientStops>
+                </LinearGradientBrush>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    <Style TargetType="{x:Type TextBlock}">
+        <Setter Property="Background" Value="Transparent" />
+        <Setter Property="FontFamily" Value="GOST type B"/>
+        <Setter Property="FontStyle" Value="Italic"/>
+    </Style>
+    <Style TargetType="{x:Type Menu}">
+        <Setter Property="Background" Value="Transparent"/>
+    </Style>
+    <Style TargetType="{x:Type StackPanel}">
+        <Setter Property="Background">
+            <Setter.Value>
+                <LinearGradientBrush>
+                    <LinearGradientBrush.GradientStops>
+                        <GradientStop Offset="0.00" Color="#FF87A0DE"/>
+                        <GradientStop Offset="0.50" Color="Azure"/>
+                        <GradientStop Offset="1.00" Color="#FF009CFF"/>
+                    </LinearGradientBrush.GradientStops>
+                </LinearGradientBrush>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    <!--<Style TargetType="{x:Type Grid}">
+        <Setter Property="Background">
+            <Setter.Value>
+                <LinearGradientBrush>
+                    <LinearGradientBrush.GradientStops>
+                        <GradientStop Offset="0.00" Color="#FF87A0DE"/>
+                        <GradientStop Offset="0.50" Color="Azure"/>
+                        <GradientStop Offset="1.00" Color="#FF009CFF"/>
+                    </LinearGradientBrush.GradientStops>
+                </LinearGradientBrush>
+            </Setter.Value>
+        </Setter>
+    </Style>-->
+    <Style TargetType="{x:Type ToolBar}">
+        <Setter Property="Background" Value="Transparent"/>
+    </Style>
+    <ControlTemplate x:Key="ButtonTemplate" TargetType="Button">
+        <Border Name="Border" BorderBrush="Black" BorderThickness="1"
+            CornerRadius="18" Background="Transparent" TextBlock.Foreground="Gray">
+            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+        </Border>
+        <ControlTemplate.Triggers>
+            <Trigger Property="IsMouseOver" Value="true">
+                <Setter TargetName="Border" Property="Background" Value="LightGray" />
+                <Setter TargetName="Border" Property="TextBlock.Foreground" Value="White" />
+            </Trigger>
+        </ControlTemplate.Triggers>
+    </ControlTemplate>
+    <Style TargetType="{x:Type Hyperlink}">
+        <Setter Property="Foreground" Value="Black"/>
+    </Style>
+
 </ResourceDictionary>

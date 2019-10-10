@@ -16,7 +16,7 @@ using System.Windows.Shapes;
 namespace WpfAppLaba1
 {
     /// <summary>
-    /// Логика взаимодействия для Page1.xaml
+    /// Логика взаимодействия для PageEmployee.xaml
     /// </summary>
     public partial class Page1 : Page
     {
