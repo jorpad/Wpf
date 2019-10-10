@@ -88,9 +88,10 @@
         <Setter Property="FontSize" Value="20"/>
         <Setter Property="FontStyle" Value="Italic"/>
     </Style>
-    <Style BasedOn="{StaticResource baseTextBlock}" x:Key="baseTextBoxx" TargetType="TextBlock">
+    <Style BasedOn="{StaticResource baseTextBlock}" x:Key="baseTextHead" TargetType="TextBlock">
         <Setter Property="Foreground" Value="Black"/>
         <Setter Property="FontSize" Value="25"/>
         <Setter Property="FontFamily" Value="GOST type B"/>
+        <Setter Property="FontWeight" Value="Bold"/>
     </Style>
 </ResourceDictionary>

@@ -42,7 +42,7 @@
                 <Image Source="Image/Delete.png" Height="40" Width="40" />
             </Button>
         </ToolBar>
-        <TextBlock Text="Список сотрудников" Margin="10,0" Style="{StaticResource baseTextBlock}" />
+        <TextBlock Text="Список сотрудников" Margin="10,0" Style="{StaticResource baseTextHead}" />
         <DataGrid Name="DataGrid1">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Фамилия" />
