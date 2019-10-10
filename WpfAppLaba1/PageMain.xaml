@@ -9,7 +9,7 @@
       Title="Главная">
 
     <StackPanel>
-        <TextBlock Margin="25,30,25,5" Style="{StaticResource baseTextBlock}">
+        <TextBlock Margin="25,30,25,5" Style="{StaticResource baseTextBoxx}">
           Система внутреннего учета инвестиционной компании
         </TextBlock>
         <TextBlock Margin="25,30,569,5" Style="{StaticResource baseTextBlock}" Height="244"> 
