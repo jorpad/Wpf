@@ -22,7 +22,12 @@ namespace WpfAppLaba1
     {
         public PageMain()
         {
-            InitializeComponent();
+            //InitializeComponent();
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            //this.Close();
         }
     }
 }

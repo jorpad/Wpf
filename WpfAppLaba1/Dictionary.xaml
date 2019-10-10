@@ -72,4 +72,14 @@
     <Style TargetType="{x:Type Hyperlink}">
         <Setter Property="Foreground" Value="Black"/>
     </Style>
+    <Style TargetType="TextBlock" x:Key="baseTextBlock">
+        <Setter Property="FontFamily" Value="GOST type B"/>
+        <Setter Property="FontSize" Value="20"/>
+        <Setter Property="FontStyle" Value="Italic"/>
+    </Style>
+    <Style BasedOn="{StaticResource baseTextBlock}" x:Key="baseTextBoxx" TargetType="TextBlock">
+        <Setter Property="Foreground" Value="Black"/>
+        <Setter Property="FontSize" Value="25"/>
+        <Setter Property="FontFamily" Value="GOST type B"/>
+    </Style>
 </ResourceDictionary>
