@@ -72,5 +72,4 @@
     <Style TargetType="{x:Type Hyperlink}">
         <Setter Property="Foreground" Value="Black"/>
     </Style>
-
 </ResourceDictionary>

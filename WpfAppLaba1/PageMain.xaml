@@ -12,7 +12,7 @@
         <TextBlock Margin="25,30,25,5" FontSize="25">
           Система внутреннего учета инвестиционной компании
         </TextBlock>
-        <TextBlock Margin="25,30,569,5" FontSize="20"> 
+        <TextBlock Margin="25,30,569,5" FontSize="20" Height="244"> 
         <Hyperlink NavigateUri="PageEmployee.xaml">Сотрудники</Hyperlink>
             <LineBreak></LineBreak>
             <LineBreak></LineBreak>
@@ -32,6 +32,6 @@
             <LineBreak></LineBreak>
             <LineBreak></LineBreak>
         </TextBlock>
-        <Button Margin="25,15,0,15" Width="92" HorizontalAlignment="Left" Command="Close" Template="{StaticResource ResourceKey=ButtonTemplate}" Height="35" Content="Выход"/>
+        <Button Margin="25,15,0,15" Width="92" HorizontalAlignment="Left" Command="Close" Template="{StaticResource ResourceKey=ButtonTemplate}" Height="35" Content="Выход" RenderTransformOrigin="0.424,-0.057"/>
     </StackPanel>
 </Page>
