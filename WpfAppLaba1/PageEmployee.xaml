@@ -57,11 +57,11 @@
         </DataGrid>
     </StackPanel>
     <Page.CommandBindings>
-        <CommandBinding Command="Undo" Executed="UndoCommandBinding_Executed" CanExecute="EditCommandBinding_CanExecute"/>
-        <CommandBinding Command="New" Executed="AddCommandBinding_Executed" CanExecute="SaveCommandBinding_CanExecute"/>
-        <CommandBinding Command="command:DataCommands.Edit" Executed="EditCommandBinding_Executed" CanExecute="SaveCommandBinding_CanExecute"/>
-        <CommandBinding Command="Search" Executed="SearchCommandBinding_Executed" CanExecute="SaveCommandBinding_CanExecute"/>
+        <CommandBinding Command="Undo" Executed="UndoCommandBinding_Executed" CanExecute="UndoCommandBinding_CanExecute"/>
+        <CommandBinding Command="New" Executed="AddCommandBinding_Executed" CanExecute="AddCommandBinding_CanExecute"/>
+        <CommandBinding Command="command:DataCommands.Edit" Executed="EditCommandBinding_Executed" CanExecute="EditCommandBinding_CanExecute"/>
+        <CommandBinding Command="Search" Executed="SearchCommandBinding_Executed" CanExecute="SearchCommandBinding_CanExecute"/>
         <CommandBinding Command="Save" Executed="SaveCommandBinding_Executed"/>
-        <CommandBinding Command="command:DataCommands.Delete" Executed="DeleteCommandBinding_Executed" />
+        <CommandBinding Command="command:DataCommands.Delete" Executed="DeleteCommandBinding_Executed" CanExecute="DeleteCommandBinding_CanExecute"/>
     </Page.CommandBindings>
 </Page>

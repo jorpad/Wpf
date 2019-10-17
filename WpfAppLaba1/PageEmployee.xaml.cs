@@ -57,9 +57,25 @@ namespace WpfAppLaba1
         }
         private void EditCommandBinding_CanExecute(object sender, CanExecuteRoutedEventArgs e)
         {
-            e.CanExecute = isDirty;
+            e.CanExecute = !isDirty;
         }
         private void SaveCommandBinding_CanExecute(object sender, CanExecuteRoutedEventArgs e)
+        {
+            e.CanExecute = !isDirty;
+        }
+        private void DeleteCommandBinding_CanExecute(object sender, CanExecuteRoutedEventArgs e)
+        {
+            e.CanExecute = !isDirty;
+        }
+        private void AddCommandBinding_CanExecute(object sender, CanExecuteRoutedEventArgs e)
+        {
+            e.CanExecute = isDirty;
+        }
+        private void SearchCommandBinding_CanExecute(object sender, CanExecuteRoutedEventArgs e)
+        {
+            e.CanExecute = isDirty;
+        }
+        private void UndoCommandBinding_CanExecute(object sender, CanExecuteRoutedEventArgs e)
         {
             e.CanExecute = !isDirty;
         }
