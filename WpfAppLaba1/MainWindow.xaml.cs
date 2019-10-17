@@ -24,5 +24,9 @@ namespace WpfAppLaba1
         {
             //InitializeComponent();
         }
+        public void ClickButtonCommand()
+        {
+            Close();
+        }
     }
 }

@@ -7,7 +7,7 @@
         mc:Ignorable="d"
         Title="Информационная система ВУ " Height="479" Width="800" WindowStartupLocation="CenterScreen" ResizeMode="NoResize" HorizontalContentAlignment="Stretch" Icon="Image/icon.png" 
         >
-    <StackPanel>
+    <Grid>
         <Frame x:Name="frame" Source="PageMain.xaml" Foreground="AliceBlue" BorderBrush="Beige" Background="AliceBlue" Height="450" Width="800"/>
-    </StackPanel>
+    </Grid>
 </Window>

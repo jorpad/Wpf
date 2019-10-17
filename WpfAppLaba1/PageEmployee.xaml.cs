@@ -18,11 +18,50 @@ namespace WpfAppLaba1
     /// <summary>
     /// Логика взаимодействия для PageEmployee.xaml
     /// </summary>
-    public partial class Page1 : Page
+    public partial class PageEmployee : Page
     {
-        public Page1()
+        public PageEmployee()
         {
             InitializeComponent();
+        }
+        private bool isDirty = true;
+        private void UndoCommandBinding_Executed(object sender, ExecutedRoutedEventArgs e)
+        {
+            MessageBox.Show("Отмена");
+            isDirty = true;
+        }
+        private void EditCommandBinding_Executed(object sender, ExecutedRoutedEventArgs e)
+        {
+            MessageBox.Show("Редактирование");
+            isDirty = true;
+        }
+        private void SearchCommandBinding_Executed(object sender, ExecutedRoutedEventArgs e)
+        {
+            MessageBox.Show("Поиск");
+            isDirty = true;
+        }
+        private void AddCommandBinding_Executed(object sender, ExecutedRoutedEventArgs e)
+        {
+            MessageBox.Show("Добавление");
+            isDirty = true;
+        }
+        private void DeleteCommandBinding_Executed(object sender, ExecutedRoutedEventArgs e)
+        {
+            MessageBox.Show("Удаление");
+            isDirty = true;
+        }
+        private void SaveCommandBinding_Executed(object sender, ExecutedRoutedEventArgs e)
+        {
+            MessageBox.Show("Сохранение");
+            isDirty = true;
+        }
+        private void EditCommandBinding_CanExecute(object sender, CanExecuteRoutedEventArgs e)
+        {
+            e.CanExecute = isDirty;
+        }
+        private void SaveCommandBinding_CanExecute(object sender, CanExecuteRoutedEventArgs e)
+        {
+            e.CanExecute = !isDirty;
         }
     }
 }
