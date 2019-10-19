@@ -16,18 +16,13 @@ using System.Windows.Shapes;
 namespace WpfAppLaba1
 {
     /// <summary>
-    /// Логика взаимодействия для PageMain.xaml
+    /// Логика взаимодействия для PageСontracts.xaml
     /// </summary>
-    public partial class PageMain : Page
+    public partial class PageСontracts : Page
     {
-        public PageMain()
+        public PageСontracts()
         {
-            //InitializeComponent();
-        }
-
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-            Environment.Exit(0);
+            InitializeComponent();
         }
     }
 }

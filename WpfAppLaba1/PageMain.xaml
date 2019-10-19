@@ -9,29 +9,33 @@
       Title="Главная">
 
     <StackPanel>
-        <TextBlock Margin="25,30,25,5" Style="{StaticResource baseTextHead}">
+        <!--<StackPanel.Background>
+            <ImageBrush ImageSource="Image\Background.jpg" Stretch="UniformToFill"/>
+        </StackPanel.Background>-->
+        <TextBlock Margin="25,30,25,5" Style="{StaticResource baseTextMainHead}">
           Система внутреннего учета инвестиционной компании
         </TextBlock>
-        <TextBlock Margin="25,30,569,5" Style="{StaticResource baseTextBlock}" Height="244"> 
+        <TextBlock Margin="25,30,569,5" Style="{StaticResource baseTextMainP}" Height="244"> 
         <Hyperlink NavigateUri="PageEmployee.xaml">Сотрудники</Hyperlink>
             <LineBreak></LineBreak>
             <LineBreak></LineBreak>
-        <Hyperlink NavigateUri="PageEmployee.xaml">Клиенты</Hyperlink>
+        <Hyperlink NavigateUri="PageClients.xaml">Клиенты</Hyperlink>
             <LineBreak></LineBreak>
             <LineBreak></LineBreak>        
-        <Hyperlink NavigateUri="PageEmployee.xaml">Договора</Hyperlink>
+        <Hyperlink NavigateUri="PageСontracts.xaml">Договора</Hyperlink>
             <LineBreak></LineBreak>
             <LineBreak></LineBreak>
-        <Hyperlink NavigateUri="PageEmployee.xaml">Ценные бумаги</Hyperlink>
+        <Hyperlink NavigateUri="PageSecurities.xaml">Ценные бумаги</Hyperlink>
             <LineBreak></LineBreak>
             <LineBreak></LineBreak>
-        <Hyperlink NavigateUri="PageEmployee.xaml">Сделки</Hyperlink>
+        <Hyperlink NavigateUri="PageDeals.xaml">Сделки</Hyperlink>
             <LineBreak></LineBreak>
             <LineBreak></LineBreak>  
-        <Hyperlink NavigateUri="PageEmployee.xaml">Справка</Hyperlink>
+        <Hyperlink NavigateUri="PageReference.xaml">Справка</Hyperlink>
             <LineBreak></LineBreak>
             <LineBreak></LineBreak>
         </TextBlock>
-        <Button Margin="650,0,0,0" Width="92" HorizontalAlignment="Left" Template="{StaticResource ResourceKey=ButtonTemplate}" Content="Выход" RenderTransformOrigin="0.424,-0.057" Click="Button_Click" Height="37" />
+        <Button Margin="650,0,0,0" Width="92" HorizontalAlignment="Left" Template="{StaticResource ResourceKey=ButtonTemplate}" Content="Выход" RenderTransformOrigin="0.424,-0.057" Click="Button_Click" Height="37" ToolTip="Выхода нет"/>
     </StackPanel>
+    
 </Page>

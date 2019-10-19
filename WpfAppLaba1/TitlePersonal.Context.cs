@@ -11,12 +11,15 @@ namespace WpfAppLaba1
 {
     using System;
     using System.Data.Entity;
+    using System.Data.Entity.Core.Objects;
     using System.Data.Entity.Infrastructure;
-    
-    public partial class TitlePersonEntities : DbContext
+
+    public partial class TitlePresonalEntities : DbContext
     {
-        public TitlePersonEntities()
-            : base("name=TitlePersonEntities")
+        internal ObjectQuery<Employee> Employees;
+
+        public TitlePresonalEntities()
+            : base("name=TitlePresonalEntities")
         {
         }
     
@@ -25,8 +28,6 @@ namespace WpfAppLaba1
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<Employee> Employee { get; set; }
-        public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
-        public virtual DbSet<Title> Title { get; set; }
+        public virtual DbSet<Title> Titles { get; set; }
     }
 }

@@ -68,11 +68,23 @@
     <Compile Include="Employee.cs">
       <DependentUpon>TitlePersonal.tt</DependentUpon>
     </Compile>
+    <Compile Include="PageClients.xaml.cs">
+      <DependentUpon>PageClients.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="PageDeals.xaml.cs">
+      <DependentUpon>PageDeals.xaml</DependentUpon>
+    </Compile>
     <Compile Include="PageEmployee.xaml.cs">
       <DependentUpon>PageEmployee.xaml</DependentUpon>
     </Compile>
-    <Compile Include="sysdiagrams.cs">
-      <DependentUpon>TitlePersonal.tt</DependentUpon>
+    <Compile Include="PageReference.xaml.cs">
+      <DependentUpon>PageReference.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="PageSecurities.xaml.cs">
+      <DependentUpon>PageSecurities.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="PageСontracts.xaml.cs">
+      <DependentUpon>PageСontracts.xaml</DependentUpon>
     </Compile>
     <Compile Include="Title.cs">
       <DependentUpon>TitlePersonal.tt</DependentUpon>
@@ -108,11 +120,31 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="PageClients.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="PageDeals.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="PageEmployee.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="PageMain.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="PageReference.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="PageSecurities.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="PageСontracts.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -138,7 +170,9 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <None Include="App.Config" />
+    <None Include="App.Config">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -165,6 +199,9 @@
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Image\Background.jpg" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="TitlePersonal.Context.tt">

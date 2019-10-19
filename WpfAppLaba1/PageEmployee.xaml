@@ -7,11 +7,11 @@
       xmlns:command="clr-namespace:WpfAppLaba1.Commands"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
-      Title="Сотрудники">
+      Title="Сотрудники" Loaded="Page_Loaded">
 
     <StackPanel>
         <Menu>
-            <MenuItem Header="Действие" >
+            <MenuItem Header="Действие" UseLayoutRounding="True" >
                 <MenuItem Header="Отменить" Command="Undo" ></MenuItem>
                 <Separator></Separator>
                 <MenuItem Header="Создать" Command="New"></MenuItem>
@@ -43,7 +43,7 @@
                 <Image Source="Image/Delete.png" Height="40" Width="40" />
             </Button>
         </ToolBar>
-        <TextBlock Text="Список сотрудников" Margin="10,0" Style="{StaticResource baseTextHead}"/>
+        <TextBlock Text="Список сотрудников" Margin="10,0" Style="{StaticResource baseTextMainHead}" Height="33"/>
         <DataGrid Name="DataGrid1">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Фамилия" />
@@ -54,6 +54,8 @@
                 <DataGridTextColumn Header="Телефон" />
                 <DataGridTextColumn Header="Электронная почта" />
             </DataGrid.Columns>
+            <DataGrid Name="DataGridEmployee" ItemsSource="{Binding}" AutoGenerateColumns="False" HorizontalAlignment="Left" MaxWidth="1000" MaxHeight="295" RowBackground="#FFE6D3EF" AlternatingRowBackground="#FC96CFD4" BorderBrush="#FF1F33EB" BorderThickness="3"  IsReadOnly="True" RowHeight="25" Cursor="Hand" CanUserAddRows="False" CanUserDeleteRows="False" Height="33" Width="800"/>
+            <DataGridTextColumn Header="Фамилия" Binding="{Binding Surname, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
         </DataGrid>
     </StackPanel>
     <Page.CommandBindings>

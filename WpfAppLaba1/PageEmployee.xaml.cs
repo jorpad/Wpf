@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -12,6 +13,10 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Collections.ObjectModel;
+using System.Data.Entity.Core.Objects;
+using System.Data.Entity;
+using System.Data.Entity.Infrastructure;
 
 namespace WpfAppLaba1
 {
@@ -20,9 +25,27 @@ namespace WpfAppLaba1
     /// </summary>
     public partial class PageEmployee : Page
     {
+        ObservableCollection<Employee> ListEmployee = new ObservableCollection<Employee>();
+        public static TitlePresonalEntities DataEntitiesEmployee { get; set; }
         public PageEmployee()
         {
-            InitializeComponent();
+            DataEntitiesEmployee = new TitlePresonalEntities();
+            InitializeComponent();          
+            ObservableCollection<Employee> ListEmployee = new ObservableCollection<Employee>();
+        }
+        private void Page_Loaded(object sender, RoutedEventArgs e)
+        {
+
+            //ObjectQuery<Employee> employees = DataEntitiesEmployee.Employees;
+            //var queryEmployee = from employee
+            //                    in employees
+            //                    orderby employee.Surname
+            //                    select employee;
+            //foreach (Employee emp in queryEmployee)
+            //{
+            //    ListEmployee.Add(emp);
+            //}
+            //DataGridEmployee.ItemsSource = ListEmployee;
         }
         private bool isDirty = true;
         private void UndoCommandBinding_Executed(object sender, ExecutedRoutedEventArgs e)
