@@ -25,11 +25,11 @@ namespace WpfAppLaba1
     /// </summary>
     public partial class PageEmployee : Page
     {
-        //ObservableCollection<Employee> ListEmployee = new ObservableCollection<Employee>();
-        //public static TitlePresonalEntities DataEntitiesEmployee { get; set; }
+        ////ObservableCollection<Employee> ListEmployee = new ObservableCollection<Employee>();
+        ////public static TitlePersonalEntities DataEntitiesEmployee { get; set; }
         public PageEmployee()
         {
-            //DataEntitiesEmployee = new TitlePresonalEntities();
+            //DataEntitiesEmployee = new TitlePersonalEntities();
             InitializeComponent();
             Save.IsEnabled = false;
             Edit.IsEnabled = true;
@@ -38,15 +38,26 @@ namespace WpfAppLaba1
             Add.IsEnabled = true;
             Delete.IsEnabled = true;
 
+            SaveBar.IsEnabled = false;
+            EditBar.IsEnabled = true;
+            UndoBar.IsEnabled = false;
+            SearchBar.IsEnabled = true;
+            AddBar.IsEnabled = true;
+            DeleteBar.IsEnabled = true;
+
         }
         private void Page_Loaded(object sender, RoutedEventArgs e)
         {
-            //ObjectQuery<Employee> employees = DataEntitiesEmployee.Employees;
-            //var queryEmployee = from employee
-            //                    in employees
-            //                    orderby employee.Surname
-            //                    select employee;
-            //foreach (Employee emp in queryEmployee)
+            //var db = new TitlePersonalEntities();
+
+
+            //var queryEmployee = from employees in db.Employees
+            //                    orderby employees.Surname
+            //                    select employees;
+
+            //List<Employee> employee = queryEmployee.ToList();
+
+            //foreach (var emp in employee)
             //{
             //    ListEmployee.Add(emp);
             //}
@@ -116,6 +127,13 @@ namespace WpfAppLaba1
             Search.IsEnabled = true;
             Add.IsEnabled = true;
             Delete.IsEnabled = true;
+
+            SaveBar.IsEnabled = false;
+            EditBar.IsEnabled = true;
+            UndoBar.IsEnabled = false;
+            SearchBar.IsEnabled = true;
+            AddBar.IsEnabled = true;
+            DeleteBar.IsEnabled = true;
         }
         private void AddClick(object sender, RoutedEventArgs e)
         {
@@ -125,6 +143,13 @@ namespace WpfAppLaba1
             Search.IsEnabled = false;
             Add.IsEnabled = false;
             Delete.IsEnabled = false;
+
+            SaveBar.IsEnabled = true;
+            EditBar.IsEnabled = false;
+            UndoBar.IsEnabled = true;
+            SearchBar.IsEnabled = false;
+            AddBar.IsEnabled = false;
+            DeleteBar.IsEnabled = false;
         }
         private void EditClick(object sender, RoutedEventArgs e)
         {
@@ -134,6 +159,13 @@ namespace WpfAppLaba1
             Search.IsEnabled = false;
             Add.IsEnabled = false;
             Delete.IsEnabled = false;
+
+            SaveBar.IsEnabled = true;
+            EditBar.IsEnabled = false;
+            UndoBar.IsEnabled = true;
+            SearchBar.IsEnabled = false;
+            AddBar.IsEnabled = false;
+            DeleteBar.IsEnabled = false;
         }
     }
 }

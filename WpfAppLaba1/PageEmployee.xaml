@@ -12,14 +12,14 @@
     <StackPanel>
         <Menu>
             <MenuItem Header="Действие" UseLayoutRounding="True" >
-                <MenuItem Header="Отменить" Command="Undo" ></MenuItem>
+                <MenuItem Header="Отменить" Command="Undo" Name="UndoBar"></MenuItem>
                 <Separator></Separator>
-                <MenuItem Header="Создать" Command="New"></MenuItem>
-                <MenuItem Header="Редактировать" Command="command:DataCommands.Edit"></MenuItem>
-                <MenuItem Header="Сохранить" Command="Save"></MenuItem>
-                <MenuItem Header="Найти" Command="Search"/>
+                <MenuItem Header="Создать" Command="New" Click="AddClick" Name="AddBar"></MenuItem>
+                <MenuItem Header="Редактировать" Name="EditBar" Click="EditClick" Command="command:DataCommands.Edit"></MenuItem>
+                <MenuItem Header="Сохранить" Name="SaveBar" Click="SaveClick" Command="Save"></MenuItem>
+                <MenuItem Header="Найти" Name="SearchBar" Command="Search"/>
                 <Separator></Separator>
-                <MenuItem Header="Удалить" Command="Delete"></MenuItem>
+                <MenuItem Header="Удалить" Name="DeleteBar" Command="Delete"></MenuItem>
             </MenuItem>
             <MenuItem Header="Отчет"></MenuItem>
         </Menu>
