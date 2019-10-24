@@ -118,7 +118,6 @@ namespace WpfAppLaba1
         {
             e.CanExecute = isDirty;
         }
-
         private void SaveClick(object sender, RoutedEventArgs e)
         {
             Save.IsEnabled = false;

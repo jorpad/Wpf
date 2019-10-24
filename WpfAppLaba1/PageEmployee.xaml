@@ -19,12 +19,12 @@
                 <MenuItem Header="Сохранить" Name="SaveBar" Click="SaveClick" Command="Save"></MenuItem>
                 <MenuItem Header="Найти" Name="SearchBar" Command="Search"/>
                 <Separator></Separator>
-                <MenuItem Header="Удалить" Name="DeleteBar" Command="Delete"></MenuItem>
+                <MenuItem Header="Удалить" Name="DeleteBar" Command="command:DataCommands.Delete"></MenuItem>
             </MenuItem>
             <MenuItem Header="Отчет"></MenuItem>
         </Menu>
         <ToolBar Name="ToolBar1" Margin="-11,0,-18,0">
-            <Button Name="Undo" ToolTip="Отменить редактирование/создание" Margin="5,2,5,2" Command="Undo">
+            <Button Name="Undo"  ToolTip="Отменить редактирование/создание" Margin="5,2,5,2" Command="Undo">
                 <Image Source="Image/Undo.png" Height="40" Width="40"/>
             </Button>
             <Button Name="Add" ToolTip="Добавить" Margin="3" Command="New" Click="AddClick">
@@ -39,7 +39,7 @@
             <Button Name="Save" ToolTip="Сохранить" Margin="3" Command="Save" Click="SaveClick">
                 <Image Source="Image/Save.png" Height="40" Width="40" />
             </Button>
-            <Button Name="Delete" ToolTip="Удалить" Margin="3" Command="Delete">
+            <Button Name="Delete" ToolTip="Удалить" Margin="3" Command="command:DataCommands.Delete">
                 <Image Source="Image/Delete.png" Height="40" Width="40" />
             </Button>
         </ToolBar>
