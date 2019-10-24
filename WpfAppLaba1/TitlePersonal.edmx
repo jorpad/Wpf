@@ -7,22 +7,23 @@
       <Schema Namespace="Хранилище TitlePresonalModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Employee">
           <Key>
-            <PropertyRef Name="ID" />
+            <PropertyRef Name="TitleID" />
           </Key>
           <Property Name="ID" Type="int" Nullable="false" />
-          <Property Name="Surname" Type="nvarchar(max)" />
-          <Property Name="Name" Type="nvarchar(max)" />
-          <Property Name="Patronymic" Type="nvarchar(max)" />
-          <Property Name="Email" Type="nvarchar(max)" />
-          <Property Name="BirstDate" Type="nvarchar(max)" />
-          <Property Name="TitleID" Type="nvarchar(max)" />
+          <Property Name="Surname" Type="text" Nullable="false" />
+          <Property Name="Name" Type="text" Nullable="false" />
+          <Property Name="Patronymic" Type="text" Nullable="false" />
+          <Property Name="BirstDate" Type="date" Nullable="false" />
+          <Property Name="Telephone" Type="nvarchar" MaxLength="12" Nullable="false" />
+          <Property Name="Email" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="TitleID" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="Title">
           <Key>
             <PropertyRef Name="ID" />
           </Key>
           <Property Name="ID" Type="int" Nullable="false" />
-          <Property Name="Title" Type="nvarchar(max)" />
+          <Property Name="Title" Type="text" Nullable="false" />
         </EntityType>
         <Association Name="FK_Employee_Title">
           <End Role="Title" Type="Self.Title" Multiplicity="1" />
@@ -32,7 +33,7 @@
               <PropertyRef Name="ID" />
             </Principal>
             <Dependent Role="Employee">
-              <PropertyRef Name="ID" />
+              <PropertyRef Name="TitleID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -51,15 +52,16 @@
       <Schema Namespace="TitlePresonalModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityType Name="Employee">
           <Key>
-            <PropertyRef Name="ID" />
+            <PropertyRef Name="TitleID" />
           </Key>
           <Property Name="ID" Type="Int32" Nullable="false" />
-          <Property Name="Surname" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="Patronymic" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="Email" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="BirstDate" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="TitleID" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Surname" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Patronymic" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="BirstDate" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Telephone" Type="String" MaxLength="12" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Email" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="TitleID" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Title" Relationship="Self.FK_Employee_Title" FromRole="Employee" ToRole="Title" />
         </EntityType>
         <EntityType Name="Title">
@@ -67,7 +69,7 @@
             <PropertyRef Name="ID" />
           </Key>
           <Property Name="ID" Type="Int32" Nullable="false" />
-          <Property Name="Title1" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Title1" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
           <NavigationProperty Name="Employee" Relationship="Self.FK_Employee_Title" FromRole="Title" ToRole="Employee" />
         </EntityType>
         <Association Name="FK_Employee_Title">
@@ -78,16 +80,16 @@
               <PropertyRef Name="ID" />
             </Principal>
             <Dependent Role="Employee">
-              <PropertyRef Name="ID" />
+              <PropertyRef Name="TitleID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <EntityContainer Name="TitlePresonalEntities" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="Employees" EntityType="Self.Employee" />
-          <EntitySet Name="Titles" EntityType="Self.Title" />
+          <EntitySet Name="Employee" EntityType="Self.Employee" />
+          <EntitySet Name="Title" EntityType="Self.Title" />
           <AssociationSet Name="FK_Employee_Title" Association="Self.FK_Employee_Title">
-            <End Role="Title" EntitySet="Titles" />
-            <End Role="Employee" EntitySet="Employees" />
+            <End Role="Title" EntitySet="Title" />
+            <End Role="Employee" EntitySet="Employee" />
           </AssociationSet>
         </EntityContainer>
       </Schema>
@@ -96,20 +98,21 @@
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
         <EntityContainerMapping StorageEntityContainer="Хранилище TitlePresonalModelContainer" CdmEntityContainer="TitlePresonalEntities">
-          <EntitySetMapping Name="Employees">
+          <EntitySetMapping Name="Employee">
             <EntityTypeMapping TypeName="TitlePresonalModel.Employee">
               <MappingFragment StoreEntitySet="Employee">
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="Surname" ColumnName="Surname" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="Patronymic" ColumnName="Patronymic" />
-                <ScalarProperty Name="Email" ColumnName="Email" />
                 <ScalarProperty Name="BirstDate" ColumnName="BirstDate" />
+                <ScalarProperty Name="Telephone" ColumnName="Telephone" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
                 <ScalarProperty Name="TitleID" ColumnName="TitleID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Titles">
+          <EntitySetMapping Name="Title">
             <EntityTypeMapping TypeName="TitlePresonalModel.Title">
               <MappingFragment StoreEntitySet="Title">
                 <ScalarProperty Name="ID" ColumnName="ID" />
@@ -131,7 +134,7 @@
     <Options>
       <DesignerInfoPropertySet>
         <DesignerProperty Name="ValidateOnBuild" Value="true" />
-        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
         <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
         <DesignerProperty Name="UseLegacyProvider" Value="false" />
         <DesignerProperty Name="CodeGenerationStrategy" Value="Нет" />

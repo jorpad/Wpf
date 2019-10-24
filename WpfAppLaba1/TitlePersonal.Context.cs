@@ -16,8 +16,6 @@ namespace WpfAppLaba1
 
     public partial class TitlePresonalEntities : DbContext
     {
-        internal ObjectQuery<Employee> Employees;
-
         public TitlePresonalEntities()
             : base("name=TitlePresonalEntities")
         {
@@ -28,6 +26,8 @@ namespace WpfAppLaba1
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<Title> Titles { get; set; }
+        public virtual DbSet<Employee> Employee { get; set; }
+        public virtual DbSet<Title> Title { get; set; }
+        public ObjectQuery<Employee> Employees { get; internal set; }
     }
 }

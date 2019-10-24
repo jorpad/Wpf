@@ -31,21 +31,18 @@ namespace WpfAppLaba1
         {
             DataEntitiesEmployee = new TitlePresonalEntities();
             InitializeComponent();          
-            ObservableCollection<Employee> ListEmployee = new ObservableCollection<Employee>();
         }
         private void Page_Loaded(object sender, RoutedEventArgs e)
         {
-
-            //ObjectQuery<Employee> employees = DataEntitiesEmployee.Employees;
-            //var queryEmployee = from employee
-            //                    in employees
-            //                    orderby employee.Surname
-            //                    select employee;
-            //foreach (Employee emp in queryEmployee)
-            //{
-            //    ListEmployee.Add(emp);
-            //}
-            //DataGridEmployee.ItemsSource = ListEmployee;
+            ObjectQuery<Employee> employees = DataEntitiesEmployee.Employees;
+            var queryEmployee = from employee
+                                in employees
+                                orderby employee.Surname
+                                select employee;
+            foreach (Employee emp in queryEmployee) {
+                ListEmployee.Add(emp);
+            }
+            DataGridEmployee.ItemsSource = ListEmployee;
         }
         private bool isDirty = true;
         private void UndoCommandBinding_Executed(object sender, ExecutedRoutedEventArgs e)

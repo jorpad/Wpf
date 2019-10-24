@@ -82,6 +82,11 @@
     </ControlTemplate>
     <Style TargetType="{x:Type Hyperlink}">
         <Setter Property="Foreground" Value="White"/>
+        <Style.Triggers>
+            <Trigger Property="IsMouseOver" Value="true">
+                <Setter Property="Foreground" Value="#FF01FFFF"/>
+            </Trigger>
+        </Style.Triggers>
     </Style>
     <Style TargetType="TextBlock" x:Key="baseTextBlock">
         <Setter Property="FontFamily" Value="GOST type B"/>

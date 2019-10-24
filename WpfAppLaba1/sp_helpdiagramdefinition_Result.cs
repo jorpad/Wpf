@@ -10,19 +10,10 @@
 namespace WpfAppLaba1
 {
     using System;
-    using System.Collections.Generic;
     
-    public partial class Employee
+    public partial class sp_helpdiagramdefinition_Result
     {
-        public int ID { get; set; }
-        public string Surname { get; set; }
-        public string Name { get; set; }
-        public string Patronymic { get; set; }
-        public System.DateTime BirstDate { get; set; }
-        public string Telephone { get; set; }
-        public string Email { get; set; }
-        public int TitleID { get; set; }
-    
-        public virtual Title Title { get; set; }
+        public Nullable<int> version { get; set; }
+        public byte[] definition { get; set; }
     }
 }
