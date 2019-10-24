@@ -70,7 +70,7 @@
     </Style>
     <ControlTemplate x:Key="ButtonTemplate" TargetType="Button">
         <Border Name="Border" BorderBrush="White" BorderThickness="1"
-            CornerRadius="18" Background="Transparent" TextBlock.Foreground="Black">
+            CornerRadius="18" Background="Transparent" TextBlock.Foreground="White">
             <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
         </Border>
         <ControlTemplate.Triggers>

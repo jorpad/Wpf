@@ -27,16 +27,16 @@
             <Button Name="Undo" ToolTip="Отменить редактирование/создание" Margin="5,2,5,2" Command="Undo">
                 <Image Source="Image/Undo.png" Height="40" Width="40"/>
             </Button>
-            <Button Name="Add" ToolTip="Добавить" Margin="3" Command="New">
+            <Button Name="Add" ToolTip="Добавить" Margin="3" Command="New" Click="AddClick">
                 <Image Source="Image/Add.png" Height="40" Width="40" />
             </Button>
-            <Button Name="Edit" ToolTip="Редактировать" Margin="3" Command="command:DataCommands.Edit">
+            <Button Name="Edit" ToolTip="Редактировать" Margin="3" Command="command:DataCommands.Edit" Click="EditClick">
                 <Image Source="Image/Edit.png" Height="40" Width="40" />
             </Button>
             <Button Name="Search" ToolTip="Поиск" Margin="3" Command="Search">
                 <Image Source="Image/Search.png" Height="40" Width="40" />
             </Button>
-            <Button Name="Save" ToolTip="Сохранить" Margin="3" Command="Save">
+            <Button Name="Save" ToolTip="Сохранить" Margin="3" Command="Save" Click="SaveClick">
                 <Image Source="Image/Save.png" Height="40" Width="40" />
             </Button>
             <Button Name="Delete" ToolTip="Удалить" Margin="3" Command="Delete">

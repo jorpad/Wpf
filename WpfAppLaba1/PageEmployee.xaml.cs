@@ -30,20 +30,27 @@ namespace WpfAppLaba1
         public PageEmployee()
         {
             //DataEntitiesEmployee = new TitlePresonalEntities();
-            InitializeComponent();          
+            InitializeComponent();
+            Save.IsEnabled = false;
+            Edit.IsEnabled = true;
+            Undo.IsEnabled = false;
+            Search.IsEnabled = true;
+            Add.IsEnabled = true;
+            Delete.IsEnabled = true;
+
         }
         private void Page_Loaded(object sender, RoutedEventArgs e)
         {
-        //    ObjectQuery<Employee> employees = DataEntitiesEmployee.Employees;
-        //    var queryEmployee = from employee
-        //                        in employees
-        //                        orderby employee.Surname
-        //                        select employee;
-        //    foreach (Employee emp in queryEmployee)
-        //    {
-        //        ListEmployee.Add(emp);
-        //    }
-        //    DataGridEmployee.ItemsSource = ListEmployee;
+            //ObjectQuery<Employee> employees = DataEntitiesEmployee.Employees;
+            //var queryEmployee = from employee
+            //                    in employees
+            //                    orderby employee.Surname
+            //                    select employee;
+            //foreach (Employee emp in queryEmployee)
+            //{
+            //    ListEmployee.Add(emp);
+            //}
+            //DataGridEmployee.ItemsSource = ListEmployee;
         }
         private bool isDirty = true;
         private void UndoCommandBinding_Executed(object sender, ExecutedRoutedEventArgs e)
@@ -78,15 +85,15 @@ namespace WpfAppLaba1
         }
         private void EditCommandBinding_CanExecute(object sender, CanExecuteRoutedEventArgs e)
         {
-            e.CanExecute = !isDirty;
+            e.CanExecute = isDirty;
         }
         private void SaveCommandBinding_CanExecute(object sender, CanExecuteRoutedEventArgs e)
         {
-            e.CanExecute = !isDirty;
+            e.CanExecute = isDirty;
         }
         private void DeleteCommandBinding_CanExecute(object sender, CanExecuteRoutedEventArgs e)
         {
-            e.CanExecute = !isDirty;
+            e.CanExecute = isDirty;
         }
         private void AddCommandBinding_CanExecute(object sender, CanExecuteRoutedEventArgs e)
         {
@@ -98,7 +105,35 @@ namespace WpfAppLaba1
         }
         private void UndoCommandBinding_CanExecute(object sender, CanExecuteRoutedEventArgs e)
         {
-            e.CanExecute = !isDirty;
+            e.CanExecute = isDirty;
+        }
+
+        private void SaveClick(object sender, RoutedEventArgs e)
+        {
+            Save.IsEnabled = false;
+            Edit.IsEnabled = true;
+            Undo.IsEnabled = false;
+            Search.IsEnabled = true;
+            Add.IsEnabled = true;
+            Delete.IsEnabled = true;
+        }
+        private void AddClick(object sender, RoutedEventArgs e)
+        {
+            Save.IsEnabled = true;
+            Edit.IsEnabled = false;
+            Undo.IsEnabled = true;
+            Search.IsEnabled = false;
+            Add.IsEnabled = false;
+            Delete.IsEnabled = false;
+        }
+        private void EditClick(object sender, RoutedEventArgs e)
+        {
+            Save.IsEnabled = true;
+            Edit.IsEnabled = false;
+            Undo.IsEnabled = true;
+            Search.IsEnabled = false;
+            Add.IsEnabled = false;
+            Delete.IsEnabled = false;
         }
     }
 }
