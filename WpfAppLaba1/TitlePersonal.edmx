@@ -85,11 +85,11 @@
           </ReferentialConstraint>
         </Association>
         <EntityContainer Name="TitlePersonalEntities" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="Employees" EntityType="Self.Employee" />
-          <EntitySet Name="Titles" EntityType="Self.Title" />
+          <EntitySet Name="Employee" EntityType="Self.Employee" />
+          <EntitySet Name="Title" EntityType="Self.Title" />
           <AssociationSet Name="FK_Employee_Title" Association="Self.FK_Employee_Title">
-            <End Role="Title" EntitySet="Titles" />
-            <End Role="Employee" EntitySet="Employees" />
+            <End Role="Title" EntitySet="Title" />
+            <End Role="Employee" EntitySet="Employee" />
           </AssociationSet>
         </EntityContainer>
       </Schema>
@@ -98,7 +98,7 @@
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
         <EntityContainerMapping StorageEntityContainer="Хранилище TitlePersonalModelContainer" CdmEntityContainer="TitlePersonalEntities">
-          <EntitySetMapping Name="Employees">
+          <EntitySetMapping Name="Employee">
             <EntityTypeMapping TypeName="TitlePersonalModel.Employee">
               <MappingFragment StoreEntitySet="Employee">
                 <ScalarProperty Name="ID" ColumnName="ID" />
@@ -112,7 +112,7 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Titles">
+          <EntitySetMapping Name="Title">
             <EntityTypeMapping TypeName="TitlePersonalModel.Title">
               <MappingFragment StoreEntitySet="Title">
                 <ScalarProperty Name="ID" ColumnName="ID" />
@@ -134,7 +134,7 @@
     <Options>
       <DesignerInfoPropertySet>
         <DesignerProperty Name="ValidateOnBuild" Value="true" />
-        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
         <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
         <DesignerProperty Name="UseLegacyProvider" Value="false" />
         <DesignerProperty Name="CodeGenerationStrategy" Value="Нет" />

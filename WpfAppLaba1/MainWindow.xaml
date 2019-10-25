@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfAppLaba1"
         mc:Ignorable="d"
-        Title="Информационная система ВУ " Height="479" Width="800" WindowStartupLocation="CenterScreen" ResizeMode="NoResize" HorizontalContentAlignment="Stretch" Icon="Image/icon.png" >
+        Title="Информационная система ВУ " Height="479" Width="800" WindowStartupLocation="CenterScreen" ResizeMode="NoResize" HorizontalContentAlignment="Stretch" Icon="Image/icon.png" Background="White" >
     <Grid>
         <Frame Source="PageMain.xaml" Foreground="White" Height="450" Width="800"/>
     </Grid>
