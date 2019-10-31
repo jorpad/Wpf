@@ -27,9 +27,11 @@ namespace WpfAppLaba1
     public partial class PageEmployee : Page
     {
         TitlePersonalEntities dataEntities = new TitlePersonalEntities();
-        TitlePersonalEntities dataTitles = new TitlePersonalEntities();
+        //TitlePersonalEntities dataTitles = new TitlePersonalEntities();
         public PageEmployee()
         {
+            TitlePersonalEntities dataEntities = new TitlePersonalEntities();
+
             InitializeComponent();
             Save.IsEnabled = false;
             Edit.IsEnabled = true;
@@ -47,15 +49,30 @@ namespace WpfAppLaba1
         private void Page_Loaded(object sender, RoutedEventArgs e)
         {
             var employees = dataEntities.Employee;
-            var titles = dataTitles.Title;
+            //var titles = dataTitles.Title;
             var query =
                 from employee in employees
-                orderby employee.ID
-                select new { employee.ID, employee.Surname, employee.Name, employee.Patronymic,
-                    employee.Telephone, employee.Email, employee.BirstDate, employee.TitleID };
+                select employee;
+                //new { employee.ID, employee.Surname, employee.Name, employee.Patronymic,
+                //    employee.Telephone, employee.Email, employee.BirstDate, employee.TitleID };
             DataGrid.ItemsSource = query.ToList();
         }
+        //public class ListTitle : ObservableCollection<Title>
+        //{
+        //    public ListTitle()
+        //    {
+        //        ObjectQuery<Title> titles = PageEmployee.dataEntities.Titles;
+        //        var queryTitle = from title in titles select title;
+        //        foreach (Title titl in queryTitle)
+        //        {
+        //            this.Add(titl);
+        //        }
+        //    }
+        //}
         private bool isDirty = true;
+
+        public static object DataEntitiesEmployee { get; internal set; }
+
         private void UndoCommandBinding_Executed(object sender, ExecutedRoutedEventArgs e)
         {
             MessageBox.Show("Отмена");
@@ -118,7 +135,6 @@ namespace WpfAppLaba1
             Search.IsEnabled = true;
             Add.IsEnabled = true;
             Delete.IsEnabled = true;
-
             SaveBar.IsEnabled = false;
             EditBar.IsEnabled = true;
             UndoBar.IsEnabled = false;
@@ -134,7 +150,6 @@ namespace WpfAppLaba1
             Search.IsEnabled = false;
             Add.IsEnabled = false;
             Delete.IsEnabled = false;
-
             SaveBar.IsEnabled = true;
             EditBar.IsEnabled = false;
             UndoBar.IsEnabled = true;

@@ -68,6 +68,7 @@
     <Compile Include="Employee.cs">
       <DependentUpon>TitlePersonal.tt</DependentUpon>
     </Compile>
+    <Compile Include="Model\ListTitle.cs" />
     <Compile Include="PageClients.xaml.cs">
       <DependentUpon>PageClients.xaml</DependentUpon>
     </Compile>
