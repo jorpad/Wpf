@@ -17,6 +17,7 @@ using System.Collections.ObjectModel;
 using System.Data.Entity.Core.Objects;
 using System.Data.Entity;
 using System.Data.Entity.Infrastructure;
+using System.Data.SqlClient;
 
 namespace WpfAppLaba1
 {
@@ -25,11 +26,10 @@ namespace WpfAppLaba1
     /// </summary>
     public partial class PageEmployee : Page
     {
-        ////ObservableCollection<Employee> ListEmployee = new ObservableCollection<Employee>();
-        ////public static TitlePersonalEntities DataEntitiesEmployee { get; set; }
+        TitlePersonalEntities dataEntities = new TitlePersonalEntities();
+        TitlePersonalEntities dataTitles = new TitlePersonalEntities();
         public PageEmployee()
         {
-            //DataEntitiesEmployee = new TitlePersonalEntities();
             InitializeComponent();
             Save.IsEnabled = false;
             Edit.IsEnabled = true;
@@ -37,31 +37,23 @@ namespace WpfAppLaba1
             Search.IsEnabled = true;
             Add.IsEnabled = true;
             Delete.IsEnabled = true;
-
             SaveBar.IsEnabled = false;
             EditBar.IsEnabled = true;
             UndoBar.IsEnabled = false;
             SearchBar.IsEnabled = true;
             AddBar.IsEnabled = true;
             DeleteBar.IsEnabled = true;
-
         }
         private void Page_Loaded(object sender, RoutedEventArgs e)
         {
-            //var db = new TitlePersonalEntities();
-
-
-            //var queryEmployee = from employees in db.Employees
-            //                    orderby employees.Surname
-            //                    select employees;
-
-            //List<Employee> employee = queryEmployee.ToList();
-
-            //foreach (var emp in employee)
-            //{
-            //    ListEmployee.Add(emp);
-            //}
-            //DataGridEmployee.ItemsSource = ListEmployee;
+            var employees = dataEntities.Employee;
+            var titles = dataTitles.Title;
+            var query =
+                from employee in employees
+                orderby employee.ID
+                select new { employee.ID, employee.Surname, employee.Name, employee.Patronymic,
+                    employee.Telephone, employee.Email, employee.BirstDate, employee.TitleID };
+            DataGrid.ItemsSource = query.ToList();
         }
         private bool isDirty = true;
         private void UndoCommandBinding_Executed(object sender, ExecutedRoutedEventArgs e)

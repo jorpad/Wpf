@@ -44,17 +44,20 @@
             </Button>
         </ToolBar>
         <TextBlock Text="Список сотрудников" Margin="10,0" Style="{StaticResource baseTextMainHead}" Height="33"/>
-        <DataGrid Name="DataGrid1">
+        <DataGrid Name="DataGrid" ItemsSource="{Binding}" AutoGenerateColumns="False" HorizontalAlignment="Left" MaxWidth="1000" MaxHeight="295" RowBackground="#FFE6D3EF" 
+AlternatingRowBackground="#FC96CFD4" BorderBrush="#FF1F33EB" BorderThickness="3" IsReadOnly="True" RowHeight="25" 
+Cursor="Hand" CanUserAddRows="False" CanUserDeleteRows="False" Width="800">
             <DataGrid.Columns>
-                <DataGridTextColumn Header="Фамилия" />
-                <DataGridTextColumn Header="Имя" />
-                <DataGridTextColumn Header="Отчество" />
-                <DataGridComboBoxColumn Header="Должность"/>
-                <DataGridTemplateColumn Header="Дата рождения"/>
-                <DataGridTextColumn Header="Телефон" />
-                <DataGridTextColumn Header="Электронная почта" />
+                <DataGridTextColumn Header="Код" Binding="{Binding ID, UpdateSourceTrigger=PropertyChanged}" />
+                <DataGridTextColumn Header="Фамилия" Binding="{Binding Surname, UpdateSourceTrigger=PropertyChanged}" />
+                <DataGridTextColumn Header="Имя" Binding="{Binding Name, UpdateSourceTrigger=PropertyChanged}" />
+                <DataGridTextColumn Header="Отчество" Binding="{Binding Patronymic, UpdateSourceTrigger=PropertyChanged}" />
+                <DataGridTextColumn Header="Должность" Binding="{Binding TitleID, UpdateSourceTrigger=PropertyChanged}"/>
+                <DataGridTextColumn Header="Дата рождения" Binding="{Binding BirstDate, UpdateSourceTrigger=PropertyChanged}"/>
+                <DataGridTextColumn Header="Телефон" Binding="{Binding Telephone, UpdateSourceTrigger=PropertyChanged}"/>
+                <DataGridTextColumn Header="Электронная почта" Binding="{Binding Email, UpdateSourceTrigger=PropertyChanged}"/>
             </DataGrid.Columns>
-            <DataGrid Name="DataGridEmployee" ItemsSource="{Binding}" AutoGenerateColumns="False" HorizontalAlignment="Left" MaxWidth="1000" MaxHeight="295" RowBackground="#FFE6D3EF" AlternatingRowBackground="#FC96CFD4" BorderBrush="#FF1F33EB" BorderThickness="3"  IsReadOnly="True" RowHeight="25" Cursor="Hand" CanUserAddRows="False" CanUserDeleteRows="False" Height="33" Width="800"/>
+            
         </DataGrid>
     </StackPanel>
     <Page.CommandBindings>

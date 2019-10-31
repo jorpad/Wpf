@@ -15,8 +15,8 @@
           <Property Name="Patronymic" Type="text" Nullable="false" />
           <Property Name="Telephone" Type="int" Nullable="false" />
           <Property Name="Email" Type="nchar" MaxLength="30" Nullable="false" />
-          <Property Name="BirstDate" Type="date" Nullable="false" />
-          <Property Name="TitleID" Type="nchar" MaxLength="10" Nullable="false" />
+          <Property Name="BirstDate" Type="datetime" Nullable="false" />
+          <Property Name="TitleID" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="Title">
           <Key>
@@ -27,13 +27,13 @@
         </EntityType>
         <Association Name="FK_Employee_Title">
           <End Role="Title" Type="Self.Title" Multiplicity="1" />
-          <End Role="Employee" Type="Self.Employee" Multiplicity="0..1" />
+          <End Role="Employee" Type="Self.Employee" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Title">
               <PropertyRef Name="ID" />
             </Principal>
             <Dependent Role="Employee">
-              <PropertyRef Name="ID" />
+              <PropertyRef Name="TitleID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -60,8 +60,8 @@
           <Property Name="Patronymic" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Telephone" Type="Int32" Nullable="false" />
           <Property Name="Email" Type="String" MaxLength="30" FixedLength="true" Unicode="true" Nullable="false" />
-          <Property Name="BirstDate" Type="DateTime" Nullable="false" Precision="0" />
-          <Property Name="TitleID" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="BirstDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="TitleID" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Title" Relationship="Self.FK_Employee_Title" FromRole="Employee" ToRole="Title" />
         </EntityType>
         <EntityType Name="Title">
@@ -74,13 +74,13 @@
         </EntityType>
         <Association Name="FK_Employee_Title">
           <End Role="Title" Type="Self.Title" Multiplicity="1" />
-          <End Role="Employee" Type="Self.Employee" Multiplicity="0..1" />
+          <End Role="Employee" Type="Self.Employee" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Title">
               <PropertyRef Name="ID" />
             </Principal>
             <Dependent Role="Employee">
-              <PropertyRef Name="ID" />
+              <PropertyRef Name="TitleID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>

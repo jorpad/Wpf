@@ -21,7 +21,7 @@ namespace WpfAppLaba1
         public int Telephone { get; set; }
         public string Email { get; set; }
         public System.DateTime BirstDate { get; set; }
-        public string TitleID { get; set; }
+        public int TitleID { get; set; }
     
         public virtual Title Title { get; set; }
     }
