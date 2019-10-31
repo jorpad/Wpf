@@ -70,7 +70,7 @@ namespace WpfAppLaba1
         //    }
         //}
         private bool isDirty = true;
-
+        //Строка
         public static object DataEntitiesEmployee { get; internal set; }
 
         private void UndoCommandBinding_Executed(object sender, ExecutedRoutedEventArgs e)
