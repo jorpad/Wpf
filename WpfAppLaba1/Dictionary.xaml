@@ -4,6 +4,15 @@
     <Style TargetType="{x:Type Button}">
         <Setter Property="Background" Value="Transparent"/>
     </Style>
+    <DataTemplate x:Key="DateTemplate" >
+        <TextBlock Text="{Binding BirstDate, 
+               StringFormat={}{0:dd\.}{0:MM\.}{0:yyyy}}" 
+               VerticalAlignment="Center" HorizontalAlignment="Center" />
+    </DataTemplate>
+    <DataTemplate x:Key="EditingDateTemplate">
+        <DatePicker SelectedDate="{Binding BirstDate, Mode=TwoWay,
+     UpdateSourceTrigger=PropertyChanged}"  />
+    </DataTemplate>
     <!--<Style TargetType="{x:Type Frame}">
         <Setter Property="Background">
             <Setter.Value>

@@ -48,14 +48,21 @@ namespace WpfAppLaba1
         }
         private void Page_Loaded(object sender, RoutedEventArgs e)
         {
+            //var employees = dataEntities.Employee;
+            ////var titles = dataTitles.Title;
+            //var query =
+            //    from employee in employees
+            //    select employee;
+            //    //new { employee.ID, employee.Surname, employee.Name, employee.Patronymic,
+            //    //    employee.Telephone, employee.Email, employee.BirstDate, employee.TitleID };
+            //DataGrid.ItemsSource = query.ToList();
+            
             var employees = dataEntities.Employee;
-            //var titles = dataTitles.Title;
             var query =
                 from employee in employees
+                orderby employee.ID
                 select employee;
-                //new { employee.ID, employee.Surname, employee.Name, employee.Patronymic,
-                //    employee.Telephone, employee.Email, employee.BirstDate, employee.TitleID };
-            DataGrid.ItemsSource = query.ToList();
+            DataGridEmployee.ItemsSource = query.ToList();
         }
         //public class ListTitle : ObservableCollection<Title>
         //{
