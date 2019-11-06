@@ -18,6 +18,7 @@ using System.Data.Entity.Core.Objects;
 using System.Data.Entity;
 using System.Data.Entity.Infrastructure;
 using System.Data.SqlClient;
+using WpfAppLaba1.Model;
 
 namespace WpfAppLaba1
 {
@@ -27,35 +28,28 @@ namespace WpfAppLaba1
     public partial class PageEmployee : Page
     {
         TitlePersonalEntities dataEntities = new TitlePersonalEntities();
-        //TitlePersonalEntities dataTitles = new TitlePersonalEntities();
+        
         public PageEmployee()
         {
             TitlePersonalEntities dataEntities = new TitlePersonalEntities();
 
             InitializeComponent();
             Save.IsEnabled = false;
-            Edit.IsEnabled = true;
+            //Edit.IsEnabled = true;
             Undo.IsEnabled = false;
-            Search.IsEnabled = true;
-            Add.IsEnabled = true;
-            Delete.IsEnabled = true;
+            Search.IsEnabled = false;
+            Add.IsEnabled = false;
+            Delete.IsEnabled = false;
             SaveBar.IsEnabled = false;
-            EditBar.IsEnabled = true;
+            //EditBar.IsEnabled = true;
             UndoBar.IsEnabled = false;
-            SearchBar.IsEnabled = true;
-            AddBar.IsEnabled = true;
-            DeleteBar.IsEnabled = true;
+            SearchBar.IsEnabled = false;
+            AddBar.IsEnabled = false;
+            DeleteBar.IsEnabled = false;
         }
+        
         private void Page_Loaded(object sender, RoutedEventArgs e)
         {
-            //var employees = dataEntities.Employee;
-            ////var titles = dataTitles.Title;
-            //var query =
-            //    from employee in employees
-            //    select employee;
-            //    //new { employee.ID, employee.Surname, employee.Name, employee.Patronymic,
-            //    //    employee.Telephone, employee.Email, employee.BirstDate, employee.TitleID };
-            //DataGrid.ItemsSource = query.ToList();
             
             var employees = dataEntities.Employee;
             var query =
@@ -64,18 +58,7 @@ namespace WpfAppLaba1
                 select employee;
             DataGridEmployee.ItemsSource = query.ToList();
         }
-        //public class ListTitle : ObservableCollection<Title>
-        //{
-        //    public ListTitle()
-        //    {
-        //        ObjectQuery<Title> titles = PageEmployee.dataEntities.Titles;
-        //        var queryTitle = from title in titles select title;
-        //        foreach (Title titl in queryTitle)
-        //        {
-        //            this.Add(titl);
-        //        }
-        //    }
-        //}
+
         private bool isDirty = true;
         //Строка
         public static object DataEntitiesEmployee { get; internal set; }
@@ -87,9 +70,9 @@ namespace WpfAppLaba1
         }
         private void EditCommandBinding_Executed(object sender, ExecutedRoutedEventArgs e)
         {
-            MessageBox.Show("Редактирование");
-            isDirty = true;
-        }
+            DataGridEmployee.IsReadOnly = false;
+            DataGridEmployee.BeginEdit();
+            isDirty = true;            Edit.IsEnabled = false;            EditBar.IsEnabled = false;            Save.IsEnabled = true;            SaveBar.IsEnabled = true;        }
         private void SearchCommandBinding_Executed(object sender, ExecutedRoutedEventArgs e)
         {
             MessageBox.Show("Поиск");
@@ -107,8 +90,13 @@ namespace WpfAppLaba1
         }
         private void SaveCommandBinding_Executed(object sender, ExecutedRoutedEventArgs e)
         {
-            MessageBox.Show("Сохранение");
+            dataEntities.SaveChanges();
             isDirty = true;
+            DataGridEmployee.IsReadOnly = true;
+            Save.IsEnabled = false;
+            SaveBar.IsEnabled = false;
+            Edit.IsEnabled = true;
+            EditBar.IsEnabled = true;
         }
         private void EditCommandBinding_CanExecute(object sender, CanExecuteRoutedEventArgs e)
         {
@@ -136,49 +124,49 @@ namespace WpfAppLaba1
         }
         private void SaveClick(object sender, RoutedEventArgs e)
         {
-            Save.IsEnabled = false;
-            Edit.IsEnabled = true;
-            Undo.IsEnabled = false;
-            Search.IsEnabled = true;
-            Add.IsEnabled = true;
-            Delete.IsEnabled = true;
-            SaveBar.IsEnabled = false;
-            EditBar.IsEnabled = true;
-            UndoBar.IsEnabled = false;
-            SearchBar.IsEnabled = true;
-            AddBar.IsEnabled = true;
-            DeleteBar.IsEnabled = true;
+            //Save.IsEnabled = false;
+            //Edit.IsEnabled = true;
+            //Undo.IsEnabled = false;
+            //Search.IsEnabled = true;
+            //Add.IsEnabled = true;
+            //Delete.IsEnabled = true;
+            //SaveBar.IsEnabled = false;
+            //EditBar.IsEnabled = true;
+            //UndoBar.IsEnabled = false;
+            //SearchBar.IsEnabled = true;
+            //AddBar.IsEnabled = true;
+            //DeleteBar.IsEnabled = true;
         }
         private void AddClick(object sender, RoutedEventArgs e)
         {
-            Save.IsEnabled = true;
-            Edit.IsEnabled = false;
-            Undo.IsEnabled = true;
-            Search.IsEnabled = false;
-            Add.IsEnabled = false;
-            Delete.IsEnabled = false;
-            SaveBar.IsEnabled = true;
-            EditBar.IsEnabled = false;
-            UndoBar.IsEnabled = true;
-            SearchBar.IsEnabled = false;
-            AddBar.IsEnabled = false;
-            DeleteBar.IsEnabled = false;
+            //Save.IsEnabled = true;
+            //Edit.IsEnabled = false;
+            //Undo.IsEnabled = true;
+            //Search.IsEnabled = false;
+            //Add.IsEnabled = false;
+            //Delete.IsEnabled = false;
+            //SaveBar.IsEnabled = true;
+            //EditBar.IsEnabled = false;
+            //UndoBar.IsEnabled = true;
+            //SearchBar.IsEnabled = false;
+            //AddBar.IsEnabled = false;
+            //DeleteBar.IsEnabled = false;
         }
         private void EditClick(object sender, RoutedEventArgs e)
         {
-            Save.IsEnabled = true;
-            Edit.IsEnabled = false;
-            Undo.IsEnabled = true;
-            Search.IsEnabled = false;
-            Add.IsEnabled = false;
-            Delete.IsEnabled = false;
+            //Save.IsEnabled = true;
+            //Edit.IsEnabled = false;
+            //Undo.IsEnabled = true;
+            //Search.IsEnabled = false;
+            //Add.IsEnabled = false;
+            //Delete.IsEnabled = false;
 
-            SaveBar.IsEnabled = true;
-            EditBar.IsEnabled = false;
-            UndoBar.IsEnabled = true;
-            SearchBar.IsEnabled = false;
-            AddBar.IsEnabled = false;
-            DeleteBar.IsEnabled = false;
+            //SaveBar.IsEnabled = true;
+            //EditBar.IsEnabled = false;
+            //UndoBar.IsEnabled = true;
+            //SearchBar.IsEnabled = false;
+            //AddBar.IsEnabled = false;
+            //DeleteBar.IsEnabled = false;
         }
     }
 }

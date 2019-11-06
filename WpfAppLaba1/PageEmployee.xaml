@@ -29,28 +29,28 @@
         </Menu>
         <ToolBar Name="ToolBar1" Margin="-11,0,-18,0">
             <Button Name="Undo"  ToolTip="Отменить редактирование/создание" Margin="5,2,5,2" Command="Undo">
-                <Image Source="Image/Undo.png" Height="40" Width="40"/>
+                <Image Source="Image/Undo.png" Height="65" Width="65"/>
             </Button>
             <Button Name="Add" ToolTip="Добавить" Margin="3" Command="New" Click="AddClick">
-                <Image Source="Image/Add.png" Height="40" Width="40" />
+                <Image Source="Image/Add.png" Height="65" Width="65" />
             </Button>
             <Button Name="Edit" ToolTip="Редактировать" Margin="3" Command="command:DataCommands.Edit" Click="EditClick">
-                <Image Source="Image/Edit.png" Height="40" Width="40" />
+                <Image Source="Image/Edit.png" Height="65" Width="65" />
             </Button>
             <Button Name="Search" ToolTip="Поиск" Margin="3" Command="Search">
-                <Image Source="Image/Search.png" Height="40" Width="40" />
+                <Image Source="Image/Search.png" Height="65" Width="65" />
             </Button>
             <Button Name="Save" ToolTip="Сохранить" Margin="3" Command="Save" Click="SaveClick">
-                <Image Source="Image/Save.png" Height="40" Width="40" />
+                <Image Source="Image/Save.png" Height="65" Width="65" />
             </Button>
             <Button Name="Delete" ToolTip="Удалить" Margin="3" Command="command:DataCommands.Delete">
-                <Image Source="Image/Delete.png" Height="40" Width="40" />
+                <Image Source="Image/Delete.png" Height="65" Width="65" />
             </Button>
         </ToolBar>
         <TextBlock Text="Список сотрудников" Margin="10,0" Style="{StaticResource baseTextMainHead}" Height="33"/>
-        <DataGrid x:Name="DataGridEmployee" ItemsSource="{Binding}" AutoGenerateColumns="False" MaxWidth="1000" MaxHeight="295" RowBackground="#FFE6D3EF"  AlternatingRowBackground="#FC96CFD4"  RowHeight="25" Cursor="Hand" CanUserAddRows="False" CanUserDeleteRows="False">
+        <DataGrid x:Name="DataGridEmployee"  ItemsSource="{Binding}" AutoGenerateColumns="False" MaxWidth="1000" MaxHeight="295" RowBackground="#FFE6D3EF"  AlternatingRowBackground="#FC96CFD4"  RowHeight="25" Cursor="Hand" CanUserAddRows="False" CanUserDeleteRows="False" HorizontalAlignment="Right" Width="800" IsReadOnly="True">
             <DataGrid.Columns>
-                <DataGridTextColumn Header="Код" Binding="{Binding ID, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" MinWidth="100"/>
+                <DataGridTextColumn Header="Код" Binding="{Binding ID, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" MinWidth="70"/>
                 <DataGridTextColumn Header="Фамилия" Binding="{Binding Surname, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" MinWidth="100"/>
                 <DataGridTextColumn Header="Имя" Binding="{Binding Name,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" MinWidth="100"/>
                 <DataGridTextColumn Header="Отчество" Binding="{Binding Patronymic, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" MinWidth="100" />
@@ -60,7 +60,6 @@
                 <DataGridTextColumn Header="Телефон" Binding="{Binding Telephone, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" MinWidth="100"/>
                 <DataGridTextColumn Header="Электронная почта" Binding="{Binding Email, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" MinWidth="100"/>
             </DataGrid.Columns>
-
         </DataGrid>
     </StackPanel>
     <Page.CommandBindings>
