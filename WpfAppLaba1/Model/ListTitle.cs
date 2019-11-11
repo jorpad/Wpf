@@ -27,16 +27,16 @@ namespace WpfAppLaba1.Model
         
         public ListTitle()
         {
-            var titles = new ObservableCollection<Title>();
+            //var titles = new ObservableCollection<Title>();
 
             var queryTitle = 
-                from Title in dataEntities.Title
+                from Title in dataEntities.Titles
                 select Title;
 
             foreach (Title titl in queryTitle)
             {
                 this.Add(titl);
-                titles.Add(titl);
+                //titles.Add(titl);
             }
         }
 

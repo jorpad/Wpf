@@ -48,14 +48,13 @@
             </Button>
         </ToolBar>
         <TextBlock Text="Список сотрудников" Margin="10,0" Style="{StaticResource baseTextMainHead}" Height="33"/>
-        <DataGrid x:Name="DataGridEmployee"  ItemsSource="{Binding}" AutoGenerateColumns="False" MaxWidth="1000" MaxHeight="295" RowBackground="#FFE6D3EF"  AlternatingRowBackground="#FC96CFD4"  RowHeight="25" Cursor="Hand" CanUserAddRows="False" CanUserDeleteRows="False" HorizontalAlignment="Right" Width="800" IsReadOnly="True">
+        <DataGrid x:Name="DataGridEmployee"  ItemsSource="{Binding}" AutoGenerateColumns="False" MaxWidth="770" MaxHeight="280" RowBackground="#FFE6D3EF"  AlternatingRowBackground="#FC96CFD4"  RowHeight="25" Cursor="Hand" CanUserAddRows="False" CanUserDeleteRows="False" IsReadOnly="True" Margin="10,0,28,0">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Код" Binding="{Binding ID, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" MinWidth="70"/>
-                <DataGridTextColumn Header="Фамилия" Binding="{Binding Surname, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" MinWidth="100"/>
-                <DataGridTextColumn Header="Имя" Binding="{Binding Name,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" MinWidth="100"/>
+                <DataGridTextColumn Header="Фамилия" Binding="{Binding Surname, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" MinWidth="100"/>
+                <DataGridTextColumn Header="Имя" Binding="{Binding Name, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" MinWidth="100"/>
                 <DataGridTextColumn Header="Отчество" Binding="{Binding Patronymic, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" MinWidth="100" />
-                <DataGridComboBoxColumn Header="Должность" ItemsSource="{Binding Source={StaticResource listTitle}}" DisplayMemberPath="Title1" SelectedValueBinding="{Binding Path=TitleID, Mode=TwoWay, 
-        UpdateSourceTrigger=PropertyChanged}" SelectedValuePath="ID" />
+                <DataGridComboBoxColumn Header="Должность" ItemsSource="{Binding Source={StaticResource listTitle}}" DisplayMemberPath="Title1" SelectedValueBinding="{Binding TitleID, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" SelectedValuePath="ID" />
                 <DataGridTemplateColumn Header="Дата рождения" CellTemplate="{StaticResource DateTemplate}" CellEditingTemplate="{StaticResource EditingDateTemplate}" />
                 <DataGridTextColumn Header="Телефон" Binding="{Binding Telephone, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" MinWidth="100"/>
                 <DataGridTextColumn Header="Электронная почта" Binding="{Binding Email, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" MinWidth="100"/>

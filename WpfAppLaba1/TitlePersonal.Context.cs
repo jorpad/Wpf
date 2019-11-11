@@ -25,7 +25,7 @@ namespace WpfAppLaba1
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<Employee> Employee { get; set; }
-        public virtual DbSet<Title> Title { get; set; }
+        public virtual DbSet<Employee> Employees { get; set; }
+        public virtual DbSet<Title> Titles { get; set; }
     }
 }

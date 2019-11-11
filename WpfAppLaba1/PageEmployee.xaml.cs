@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -13,11 +14,11 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using System.Collections.ObjectModel;
 using System.Data.Entity.Core.Objects;
 using System.Data.Entity;
 using System.Data.Entity.Infrastructure;
 using System.Data.SqlClient;
+using System.Data.Services.Client;
 using WpfAppLaba1.Model;
 
 namespace WpfAppLaba1
@@ -28,41 +29,39 @@ namespace WpfAppLaba1
     public partial class PageEmployee : Page
     {
         TitlePersonalEntities dataEntities = new TitlePersonalEntities();
-        
+        ObservableCollection<Employee> ListEmployee = new ObservableCollection<Employee>();
         public PageEmployee()
         {
             TitlePersonalEntities dataEntities = new TitlePersonalEntities();
-
             InitializeComponent();
             Save.IsEnabled = false;
             //Edit.IsEnabled = true;
             Undo.IsEnabled = false;
             Search.IsEnabled = false;
-            Add.IsEnabled = false;
-            Delete.IsEnabled = false;
+            Add.IsEnabled = true;
+            Delete.IsEnabled = true;
             SaveBar.IsEnabled = false;
             //EditBar.IsEnabled = true;
             UndoBar.IsEnabled = false;
             SearchBar.IsEnabled = false;
-            AddBar.IsEnabled = false;
-            DeleteBar.IsEnabled = false;
+            AddBar.IsEnabled = true;
+            DeleteBar.IsEnabled = true;
         }
-        
-        private void Page_Loaded(object sender, RoutedEventArgs e)
+        public void ReZapros()
         {
-            
-            var employees = dataEntities.Employee;
+            var employees = dataEntities.Employees;
             var query =
                 from employee in employees
-                orderby employee.ID
+
                 select employee;
             DataGridEmployee.ItemsSource = query.ToList();
         }
-
+        private void Page_Loaded(object sender, RoutedEventArgs e)
+        {
+            ReZapros();
+        }
         private bool isDirty = true;
-        //Строка
         public static object DataEntitiesEmployee { get; internal set; }
-
         private void UndoCommandBinding_Executed(object sender, ExecutedRoutedEventArgs e)
         {
             MessageBox.Show("Отмена");
@@ -80,13 +79,41 @@ namespace WpfAppLaba1
         }
         private void AddCommandBinding_Executed(object sender, ExecutedRoutedEventArgs e)
         {
-            MessageBox.Show("Добавление");
-            isDirty = true;
+            Employee employee = new Employee();
+            employee.ID = dataEntities.Employees.Count() + 1;
+            employee.Surname = "не задано";
+            employee.Name = "не задано";
+            employee.Patronymic = "не задано";
+            employee.Telephone = 0;
+            employee.BirstDate = DateTime.Parse("2001-12-12");
+            employee.Email = "не задано";
+            employee.TitleID = 0;
+            dataEntities.Employees.Add(employee);
+            dataEntities.SaveChanges();
+            DataGridEmployee.BeginEdit();
+            Save.IsEnabled = true;
+            SaveBar.IsEnabled = true;
+            ReZapros();
         }
         private void DeleteCommandBinding_Executed(object sender, ExecutedRoutedEventArgs e)
         {
-            MessageBox.Show("Удаление");
-            isDirty = true;
+            Employee emp = DataGridEmployee.SelectedItem as Employee;
+            if (emp != null)
+            {
+                MessageBoxResult result = MessageBox.Show("Удалить сотрудника? ", "Предупреждение", MessageBoxButton.OKCancel);
+                if (result == MessageBoxResult.OK)
+                {
+                    dataEntities.Employees.Remove(emp);
+                    DataGridEmployee.SelectedIndex = DataGridEmployee.SelectedIndex == 0 ? 1 : DataGridEmployee.SelectedIndex - 1;
+                    ListEmployee.Remove(emp);
+                    dataEntities.SaveChanges();
+                    ReZapros();
+                }
+            }
+            else
+            {
+                MessageBox.Show("Выберите строку для удаления");
+            }
         }
         private void SaveCommandBinding_Executed(object sender, ExecutedRoutedEventArgs e)
         {
@@ -97,6 +124,7 @@ namespace WpfAppLaba1
             SaveBar.IsEnabled = false;
             Edit.IsEnabled = true;
             EditBar.IsEnabled = true;
+            ReZapros();
         }
         private void EditCommandBinding_CanExecute(object sender, CanExecuteRoutedEventArgs e)
         {
