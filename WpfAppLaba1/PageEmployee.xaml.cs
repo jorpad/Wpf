@@ -37,13 +37,13 @@ namespace WpfAppLaba1
             Save.IsEnabled = false;
             //Edit.IsEnabled = true;
             Undo.IsEnabled = false;
-            Search.IsEnabled = false;
+            Search.IsEnabled = true;
             Add.IsEnabled = true;
             Delete.IsEnabled = true;
             SaveBar.IsEnabled = false;
             //EditBar.IsEnabled = true;
             UndoBar.IsEnabled = false;
-            SearchBar.IsEnabled = false;
+            SearchBar.IsEnabled = true;
             AddBar.IsEnabled = true;
             DeleteBar.IsEnabled = true;
         }
@@ -74,8 +74,21 @@ namespace WpfAppLaba1
             isDirty = true;            Edit.IsEnabled = false;            EditBar.IsEnabled = false;            Save.IsEnabled = true;            SaveBar.IsEnabled = true;        }
         private void SearchCommandBinding_Executed(object sender, ExecutedRoutedEventArgs e)
         {
-            MessageBox.Show("Поиск");
-            isDirty = true;
+            string surname = this.txtbxSurname.Text;
+            TitlePersonalEntities dataEntities = new TitlePersonalEntities();
+            Employee emp = new Employee();
+            ListEmployee.Clear();
+            emp.Surname = txtbxSurname.Text;
+            var queryEmployee = from employee in dataEntities.Employees
+                                where employee.Surname == surname
+                                select employee;
+
+            foreach (var item in queryEmployee.ToList())
+            {
+                if (item.Surname.Contains(txtbxSurname.Text) == true)
+                    ListEmployee.Add(item);
+            }
+            DataGridEmployee.ItemsSource = ListEmployee;
         }
         private void AddCommandBinding_Executed(object sender, ExecutedRoutedEventArgs e)
         {
@@ -91,8 +104,6 @@ namespace WpfAppLaba1
             dataEntities.Employees.Add(employee);
             dataEntities.SaveChanges();
             DataGridEmployee.BeginEdit();
-            Save.IsEnabled = true;
-            SaveBar.IsEnabled = true;
             ReZapros();
         }
         private void DeleteCommandBinding_Executed(object sender, ExecutedRoutedEventArgs e)
@@ -195,6 +206,10 @@ namespace WpfAppLaba1
             //SearchBar.IsEnabled = false;
             //AddBar.IsEnabled = false;
             //DeleteBar.IsEnabled = false;
+        }
+        private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            ReZapros();
         }
     }
 }
