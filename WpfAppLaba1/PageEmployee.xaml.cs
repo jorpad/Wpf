@@ -74,14 +74,21 @@ namespace WpfAppLaba1
             isDirty = true;            Edit.IsEnabled = false;            EditBar.IsEnabled = false;            Save.IsEnabled = true;            SaveBar.IsEnabled = true;        }
         private void SearchCommandBinding_Executed(object sender, ExecutedRoutedEventArgs e)
         {
+            isDirty = true;
+            Search.IsEnabled = true;
+            SearchBar.IsEnabled = true;
             if (BorderFind.Visibility == System.Windows.Visibility.Visible)
             {
                 BorderFind.Visibility = System.Windows.Visibility.Hidden;
+                Search.IsEnabled = true;
+                SearchBar.IsEnabled = true;
             }
             else
             if (BorderFind.Visibility == System.Windows.Visibility.Hidden)
             {
                 BorderFind.Visibility = System.Windows.Visibility.Visible;
+                Search.IsEnabled = true;
+                SearchBar.IsEnabled = true;
             }
         }
         private void AddCommandBinding_Executed(object sender, ExecutedRoutedEventArgs e)
@@ -227,18 +234,26 @@ namespace WpfAppLaba1
 
         private void FindTitle_Click(object sender, RoutedEventArgs e)
         {
-            ListEmployee.Clear();
-
-            Title title = cbxTitle.SelectedItem as Title;
-            var employees = dataEntities.Employees;
-            var queryEmployee = from employee in employees
-                                where employee.TitleID == title.ID
-                                select employee;
-            foreach (Employee emp in queryEmployee)
+            try
             {
-                ListEmployee.Add(emp);
+                ListEmployee.Clear();
+                Title title = cbxTitle.SelectedItem as Title;
+                var employees = dataEntities.Employees;
+                var queryEmployee = from employee in employees
+                                    where employee.TitleID == title.ID
+                                    select employee;
+                foreach (Employee emp in queryEmployee)
+                {
+                    ListEmployee.Add(emp);
+                }
+                DataGridEmployee.ItemsSource = ListEmployee;
+                Search.IsEnabled = true;
+                SearchBar.IsEnabled = true;
             }
-            DataGridEmployee.ItemsSource = ListEmployee;
+            catch
+            {
+
+            }
         }
         private void FindSurname_Click(object sender, RoutedEventArgs e)
         {
@@ -257,6 +272,8 @@ namespace WpfAppLaba1
                     ListEmployee.Add(item);
             }
             DataGridEmployee.ItemsSource = ListEmployee;
+            Search.IsEnabled = true;
+            SearchBar.IsEnabled = true;
         }
     }
 }
