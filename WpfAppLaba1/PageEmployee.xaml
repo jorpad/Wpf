@@ -7,11 +7,13 @@
       xmlns:core ="clr-namespace:WpfAppLaba1.Model"
       xmlns:command="clr-namespace:WpfAppLaba1.Commands"
       mc:Ignorable="d" 
+      xmlns:rule="clr-namespace:WpfAppLaba1.ValidationRules"
       d:DesignHeight="450" d:DesignWidth="800"
       Title="Сотрудники" Loaded="Page_Loaded">
     <Page.Resources>
         <core:ListTitle x:Key="listTitle"/>
     </Page.Resources>
+
 
     <StackPanel>
         <Menu>
@@ -27,7 +29,7 @@
             </MenuItem>
             <MenuItem Header="Отчет"></MenuItem>
         </Menu>
-        <ToolBar Name="ToolBar1" Margin="-11,0,-18,0">
+        <ToolBar Name="ToolBar1" Margin="-11,0,-21,0">
             <Button Name="Undo"  ToolTip="Отменить редактирование/создание" Margin="5,2,5,2" Command="Undo">
                 <Image Source="Image/Undo.png" Height="65" Width="65"/>
             </Button>
@@ -47,11 +49,9 @@
                 <Image Source="Image/Delete.png" Height="65" Width="65" />
             </Button>
         </ToolBar>
-        <TextBlock TextWrapping="Wrap" Text="Введите фамилию нужного сотрудника в поле ниже" Margin="10,0" Style="{StaticResource baseTextMainHead}"/>
-        <TextBox Height="22" TextWrapping="Wrap" Margin="10,5,565,0" Name="txtbxSurname" TextChanged="TextBox_TextChanged"/>
         <TextBlock Text="Список сотрудников" Margin="10,0" Style="{StaticResource baseTextMainHead}" Height="33"/>
-        <DataGrid x:Name="DataGridEmployee"  ItemsSource="{Binding}" AutoGenerateColumns="False" MaxWidth="770" MaxHeight="265" RowBackground="#FFE6D3EF"  AlternatingRowBackground="#FC96CFD4"  RowHeight="25" Cursor="Hand" CanUserAddRows="False" CanUserDeleteRows="False" IsReadOnly="True" Margin="10,0,28,0">
-            <DataGrid.Columns> 
+        <DataGrid x:Name="DataGridEmployee"  ItemsSource="{Binding}" AutoGenerateColumns="False" MaxWidth="770" MaxHeight="165" RowBackground="#FFE6D3EF"  AlternatingRowBackground="#FC96CFD4"  RowHeight="25" Cursor="Hand" CanUserAddRows="False" CanUserDeleteRows="False" IsReadOnly="True" Margin="10,0,28,0">
+            <DataGrid.Columns>
                 <DataGridTextColumn Header="Код" Binding="{Binding ID, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" MinWidth="70"/>
                 <DataGridTextColumn Header="Фамилия" Binding="{Binding Surname, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" MinWidth="100"/>
                 <DataGridTextColumn Header="Имя" Binding="{Binding Name, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" MinWidth="100"/>
@@ -59,9 +59,41 @@
                 <DataGridComboBoxColumn Header="Должность" ItemsSource="{Binding Source={StaticResource listTitle}}" DisplayMemberPath="Title1" SelectedValueBinding="{Binding TitleID, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" SelectedValuePath="ID" />
                 <DataGridTemplateColumn Header="Дата рождения" CellTemplate="{StaticResource DateTemplate}" CellEditingTemplate="{StaticResource EditingDateTemplate}" />
                 <DataGridTextColumn Header="Телефон" Binding="{Binding Telephone, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" MinWidth="100"/>
-                <DataGridTextColumn Header="Электронная почта" Binding="{Binding Email, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" MinWidth="100"/>
+                <DataGridTextColumn  Header="Электронная почта" EditingElementStyle="{StaticResource errorStyle}">
+                    <DataGridTextColumn.Binding >
+                        <Binding Path="Email" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged" ValidatesOnExceptions ="True" >
+                            <Binding.ValidationRules>
+                                <rule:EmailRule/>
+                            </Binding.ValidationRules>
+                        </Binding>
+                    </DataGridTextColumn.Binding>
+                </DataGridTextColumn>
             </DataGrid.Columns>
+            <DataGrid.RowValidationErrorTemplate>
+                <ControlTemplate>
+                    <Grid Margin="0,-2,0,-2"
+              ToolTip="{Binding (Validation.Errors)[0].ErrorContent, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type DataGridRow}}}">
+                        <Ellipse StrokeThickness="0" Fill="Red" Width="{TemplateBinding FontSize}" Height="{TemplateBinding FontSize}" />
+                        <TextBlock Text="!" FontSize="{TemplateBinding FontSize}" FontWeight="Bold" Foreground="White" HorizontalAlignment="Center"  />
+                    </Grid>
+                </ControlTemplate>
+            </DataGrid.RowValidationErrorTemplate>
         </DataGrid>
+        <Border Name="BorderFind" Visibility="Hidden" Height="127">
+            <Grid Margin="4,10,16,8"  >
+                <TextBlock TextWrapping="Wrap" Margin="9,10,1,-3" Style="{StaticResource baseTextMainHead}"><Run Text="Введите фамилию или должность нужного сотрудника в поле ниже"/><InlineUIContainer>
+                    </InlineUIContainer></TextBlock>
+                <ComboBox Margin="9,41,564,44" Height="24"  ItemsSource="{Binding Source={StaticResource listTitle}}"  DisplayMemberPath="Title1" SelectedValuePath="ID" Name="cbxTitle"/>
+                <TextBox TextWrapping="Wrap" Margin="9,70,564,15" x:Name="txtbxSurname" TextChanged="txtbxSurname_TextChanged"/>
+                <Button Name="FindSurname" ToolTip="Поиск" Margin="218,70,538,15" Click="FindSurname_Click">
+                    <Image Source="Image/Search.png"/>
+                </Button>
+                <Button Name="FindTitle" ToolTip="Поиск" Margin="218,41,538,44" Click="FindTitle_Click">
+                    <Image Source="Image/Search.png"/>
+                </Button>
+
+            </Grid>
+        </Border>
     </StackPanel>
     <Page.CommandBindings>
         <CommandBinding Command="Undo" Executed="UndoCommandBinding_Executed" CanExecute="UndoCommandBinding_CanExecute"/>
@@ -71,4 +103,5 @@
         <CommandBinding Command="Save" Executed="SaveCommandBinding_Executed" CanExecute="SaveCommandBinding_CanExecute"/>
         <CommandBinding Command="command:DataCommands.Delete" Executed="DeleteCommandBinding_Executed" CanExecute="DeleteCommandBinding_CanExecute"/>
     </Page.CommandBindings>
+
 </Page>

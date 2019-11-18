@@ -2,6 +2,25 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:local="clr-namespace:WpfAppLaba1">
 
+    <Style TargetType="Grid" x:Key="Grids">
+        <Setter Property="Background">
+            <Setter.Value>
+                <ImageBrush ImageSource="Image\Background.jpg" Stretch="UniformToFill"/>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    <Style x:Key="errorStyle" TargetType="{x:Type TextBox}">
+        <Setter Property="Padding" Value="-2"/>
+        <Style.Triggers>
+            <Trigger Property="Validation.HasError" Value="True">
+                <Setter Property="Background" Value="Red"/>
+                <Setter Property="BorderThickness" Value="1" />
+                <Setter Property="ToolTip"
+                    Value="{Binding RelativeSource={RelativeSource Self},
+                Path=(Validation.Errors)[0].ErrorContent}"/>
+            </Trigger>
+        </Style.Triggers>
+    </Style>
     <DataTemplate x:Key="DateTemplate" >
         <TextBlock Text="{Binding BirstDate, 
                StringFormat={}{0:dd\.}{0:MM\.}{0:yyyy}}" 

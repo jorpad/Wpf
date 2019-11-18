@@ -106,6 +106,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>TitlePersonal.edmx</DependentUpon>
     </Compile>
+    <Compile Include="ValidationRules\EmailRule.cs" />
     <Page Include="Dictionary.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

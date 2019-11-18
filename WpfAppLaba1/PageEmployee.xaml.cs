@@ -74,37 +74,50 @@ namespace WpfAppLaba1
             isDirty = true;            Edit.IsEnabled = false;            EditBar.IsEnabled = false;            Save.IsEnabled = true;            SaveBar.IsEnabled = true;        }
         private void SearchCommandBinding_Executed(object sender, ExecutedRoutedEventArgs e)
         {
-            string surname = this.txtbxSurname.Text;
-            TitlePersonalEntities dataEntities = new TitlePersonalEntities();
-            Employee emp = new Employee();
-            ListEmployee.Clear();
-            emp.Surname = txtbxSurname.Text;
-            var queryEmployee = from employee in dataEntities.Employees
-                                where employee.Surname == surname
-                                select employee;
-
-            foreach (var item in queryEmployee.ToList())
+            if (BorderFind.Visibility == System.Windows.Visibility.Visible)
             {
-                if (item.Surname.Contains(txtbxSurname.Text) == true)
-                    ListEmployee.Add(item);
+                BorderFind.Visibility = System.Windows.Visibility.Hidden;
             }
-            DataGridEmployee.ItemsSource = ListEmployee;
+            else
+            if (BorderFind.Visibility == System.Windows.Visibility.Hidden)
+            {
+                BorderFind.Visibility = System.Windows.Visibility.Visible;
+            }
         }
         private void AddCommandBinding_Executed(object sender, ExecutedRoutedEventArgs e)
         {
             Employee employee = new Employee();
-            employee.ID = dataEntities.Employees.Count() + 1;
-            employee.Surname = "не задано";
-            employee.Name = "не задано";
-            employee.Patronymic = "не задано";
-            employee.Telephone = 0;
-            employee.BirstDate = DateTime.Parse("2001-12-12");
-            employee.Email = "не задано";
-            employee.TitleID = 0;
-            dataEntities.Employees.Add(employee);
-            dataEntities.SaveChanges();
-            DataGridEmployee.BeginEdit();
-            ReZapros();
+            try
+            {
+                employee.ID = dataEntities.Employees.Count() + 1;
+                employee.Surname = "не задано";
+                employee.Name = "не задано";
+                employee.Patronymic = "не задано";
+                employee.Telephone = 0;
+                employee.BirstDate = DateTime.Parse("2001-12-12");
+                employee.Email = "не задано";
+                employee.TitleID = 0;
+                dataEntities.Employees.Add(employee);
+                dataEntities.SaveChanges();
+                DataGridEmployee.BeginEdit();
+                ReZapros();
+            }
+            catch
+            {
+                employee.ID = dataEntities.Employees.Count() + 2;
+                employee.Surname = "не задано";
+                employee.Name = "не задано";
+                employee.Patronymic = "не задано";
+                employee.Telephone = 0;
+                employee.BirstDate = DateTime.Parse("2001-12-12");
+                employee.Email = "не задано";
+                employee.TitleID = 0;
+                dataEntities.Employees.Add(employee);
+                dataEntities.SaveChanges();
+                DataGridEmployee.BeginEdit();
+                ReZapros();
+            }
+
         }
         private void DeleteCommandBinding_Executed(object sender, ExecutedRoutedEventArgs e)
         {
@@ -207,9 +220,43 @@ namespace WpfAppLaba1
             //AddBar.IsEnabled = false;
             //DeleteBar.IsEnabled = false;
         }
-        private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
+        private void txtbxSurname_TextChanged(object sender, TextChangedEventArgs e)
         {
             ReZapros();
+        }
+
+        private void FindTitle_Click(object sender, RoutedEventArgs e)
+        {
+            ListEmployee.Clear();
+
+            Title title = cbxTitle.SelectedItem as Title;
+            var employees = dataEntities.Employees;
+            var queryEmployee = from employee in employees
+                                where employee.TitleID == title.ID
+                                select employee;
+            foreach (Employee emp in queryEmployee)
+            {
+                ListEmployee.Add(emp);
+            }
+            DataGridEmployee.ItemsSource = ListEmployee;
+        }
+        private void FindSurname_Click(object sender, RoutedEventArgs e)
+        {
+            string surname = this.txtbxSurname.Text;
+            TitlePersonalEntities dataEntities = new TitlePersonalEntities();
+            Employee emp = new Employee();
+            ListEmployee.Clear();
+            emp.Surname = txtbxSurname.Text;
+            var queryEmployee = from employee in dataEntities.Employees
+                                where employee.Surname == surname
+                                select employee;
+
+            foreach (var item in queryEmployee.ToList())
+            {
+                if (item.Surname.Contains(txtbxSurname.Text) == true)
+                    ListEmployee.Add(item);
+            }
+            DataGridEmployee.ItemsSource = ListEmployee;
         }
     }
 }
