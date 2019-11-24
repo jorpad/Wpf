@@ -71,7 +71,12 @@ namespace WpfAppLaba1
         {
             DataGridEmployee.IsReadOnly = false;
             DataGridEmployee.BeginEdit();
-            isDirty = true;            Edit.IsEnabled = false;            EditBar.IsEnabled = false;            Save.IsEnabled = true;            SaveBar.IsEnabled = true;        }
+            isDirty = true;
+            Edit.IsEnabled = false;
+            EditBar.IsEnabled = false;
+            Save.IsEnabled = true;
+            SaveBar.IsEnabled = true;
+        }
         private void SearchCommandBinding_Executed(object sender, ExecutedRoutedEventArgs e)
         {
             isDirty = true;
@@ -124,7 +129,6 @@ namespace WpfAppLaba1
                 DataGridEmployee.BeginEdit();
                 ReZapros();
             }
-
         }
         private void DeleteCommandBinding_Executed(object sender, ExecutedRoutedEventArgs e)
         {
@@ -219,7 +223,6 @@ namespace WpfAppLaba1
             //Search.IsEnabled = false;
             //Add.IsEnabled = false;
             //Delete.IsEnabled = false;
-
             //SaveBar.IsEnabled = true;
             //EditBar.IsEnabled = false;
             //UndoBar.IsEnabled = true;
@@ -231,7 +234,6 @@ namespace WpfAppLaba1
         {
             ReZapros();
         }
-
         private void FindTitle_Click(object sender, RoutedEventArgs e)
         {
             try
@@ -257,23 +259,30 @@ namespace WpfAppLaba1
         }
         private void FindSurname_Click(object sender, RoutedEventArgs e)
         {
-            string surname = this.txtbxSurname.Text;
-            TitlePersonalEntities dataEntities = new TitlePersonalEntities();
-            Employee emp = new Employee();
-            ListEmployee.Clear();
-            emp.Surname = txtbxSurname.Text;
-            var queryEmployee = from employee in dataEntities.Employees
-                                where employee.Surname == surname
-                                select employee;
-
-            foreach (var item in queryEmployee.ToList())
+            try
             {
-                if (item.Surname.Contains(txtbxSurname.Text) == true)
-                    ListEmployee.Add(item);
+                string surname = this.txtbxSurname.Text;
+                TitlePersonalEntities dataEntities = new TitlePersonalEntities();
+                Employee emp = new Employee();
+                ListEmployee.Clear();
+                emp.Surname = txtbxSurname.Text;
+                var queryEmployee = from employee in dataEntities.Employees
+                                    where employee.Surname == surname
+                                    select employee;
+
+                foreach (var item in queryEmployee.ToList())
+                {
+                    if (item.Surname.Contains(txtbxSurname.Text) == true)
+                        ListEmployee.Add(item);
+                }
+                DataGridEmployee.ItemsSource = ListEmployee;
+                Search.IsEnabled = true;
+                SearchBar.IsEnabled = true;
+        }
+            catch
+            { 
+
             }
-            DataGridEmployee.ItemsSource = ListEmployee;
-            Search.IsEnabled = true;
-            SearchBar.IsEnabled = true;
         }
     }
 }
